@@ -1,0 +1,56 @@
+<header>
+  <div class="content">
+    <div class="logo">
+      <a [routerLink]="['/']">
+        <img src="../resources/images/Logo-Taoyuan.png" alt="桃園市政府">
+      </a>
+      <div class="col-md-2"> XXXXXXXXXXXXXXXXXXXXXXX</div>
+    </div>
+    <!--<div class="social">
+      <sec:authorize access="hasAuthority('ROLE_SOCIAL')">
+        <a class="btn" href="<c:url value='/personal/profile'/>" style="padding: 0;">
+          <img src="${principal.imageUrlHref}" alt="user" width="30" height="30" />
+        </a>
+      </sec:authorize>
+      <sec:authorize access="!hasAuthority('ROLE_SOCIAL')">
+        <a class="btn" href="<c:url value='/login'/>" style="padding: 0;">
+          <img src="<c:url value='/images/buttons/signin.png'/>" alt="user" width="30" height="30">
+        </a>
+      </sec:authorize>
+      <a class="btn facebook" href="#" style="padding: 0;">
+        <img src="<c:url value='/images/buttons/icon-facebook.png'/>" alt="facebook">
+      </a>
+      <a class="btn twitter" href="#" style="padding: 0;">
+        <img src="<c:url value='/images/buttons/icon-twitter.png'/>" alt="twitter">
+      </a>
+      <a class="btn googlePlus" href="#" style="padding: 0;">
+        <img src="<c:url value='/images/buttons/icon-google+.png'/>" alt="google+">
+      </a>
+    </div>-->
+
+
+    <div class="weather">
+      <div class="icon" id="weatherWarningBtn">
+        <a href="#" style="text-decoration: none;">
+          <img id="imgWeather" src="../resources/images/weather/sunny.png" alt="天氣快報" title="天氣快報">
+        </a>
+      </div>
+      <!--<div class="weather-temp">
+        <a id="weather-temp" style="text-decoration: none; color: black;" href="<c:url value=" /weather "/>" title="溫度">
+        </a>
+      </div>
+      <div class="weather-rain">
+        <a id="weather-rain" style="text-decoration: none; color: black;" href="<c:url value=" /weather "/>" title="降雨機率">
+        </a>
+      </div>-->
+    </div>
+    <div id="dialog" title="天氣快報" style="display: none;">
+      <div class="row">
+        <span>發佈時間：</span>
+        <span id="release"></span>
+      </div>
+      <div class="row" id="weatherContent"></div>
+    </div>
+  </div>
+</header>
+<router-outlet></router-outlet>
