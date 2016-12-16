@@ -1,8 +1,8 @@
 <h1>header-webmenu</h1>
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   <ul class="nav navbar-nav">
-    <li class="dropdown">XX</li><li class="dropdown">XX</li>
-    {{webMenus}}
+    <li  class="dropdown" *ngFor="let menu of webMenus">{{menu.title}}</li>
+    
 
     <!--
     <li class="dropdown">
