@@ -1,3 +1,5 @@
+import { coreGroupModules } from './core/core-group.module';
+import { DropdownModule } from './core/ui/dropdown/dropdown.module';
 import { coreGroupComponents } from './core/core-group.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
@@ -17,7 +19,8 @@ import { NgModule } from '@angular/core';
     FormsModule,
     HttpModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    coreGroupModules
   ],
   providers: [],
   bootstrap: [AppComponent]

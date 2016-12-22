@@ -5,7 +5,7 @@
         <img src="../resources/images/Logo-Taoyuan.png" alt="桃園市政府">
       </a>
     </div>
-    <app-header-webmenu></app-header-webmenu>
+
     <!--<div class="social">
       <sec:authorize access="hasAuthority('ROLE_SOCIAL')">
         <a class="btn" href="<c:url value='/personal/profile'/>" style="padding: 0;">
@@ -32,10 +32,10 @@
     <div class="weather">
       <div class="icon" id="weatherWarningBtn">
         <a href="#" style="text-decoration: none;">
-          <img id="imgWeather" src="../resources/images/weather/sunny.png" alt="天氣快報" title="天氣快報">
-        </a>
-      </div>
-      <!--<div class="weather-temp">
+<img id="imgWeather" src="../resources/images/weather/sunny.png" alt="天氣快報" title="天氣快報">
+</a>
+</div>
+<!--<div class="weather-temp">
         <a id="weather-temp" style="text-decoration: none; color: black;" href="<c:url value=" /weather "/>" title="溫度">
         </a>
       </div>
@@ -43,14 +43,37 @@
         <a id="weather-rain" style="text-decoration: none; color: black;" href="<c:url value=" /weather "/>" title="降雨機率">
         </a>
       </div>-->
-    </div>
-    <div id="dialog" title="天氣快報" style="display: none;">
-      <div class="row">
-        <span>發佈時間：</span>
-        <span id="release"></span>
-      </div>
-      <div class="row" id="weatherContent"></div>
-    </div>
-  </div>
+</div>
+<div id="dialog" title="天氣快報" style="display: none;">
+<div class="row">
+  <span>發佈時間：</span>
+  <span id="release"></span>
+</div>
+<div class="row" id="weatherContent"></div>
+</div>
+</div>
 </header>
+
+<div class="topmenu">
+  <div class="content">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+            aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <!--服務總覽-->
+        <app-header-webmenu></app-header-webmenu>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
 <router-outlet></router-outlet>

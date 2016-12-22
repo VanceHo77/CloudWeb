@@ -1,6 +1,8 @@
+import { DropdownObject } from './../../ui/dropdown/dropdown-object';
 import { HeaderWebmenuService } from './header-webmenu.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
+
 
 @Component({
   selector: 'app-header-webmenu',
@@ -9,7 +11,14 @@ import { Observable } from 'rxjs/Rx';
 })
 export class HeaderWebmenuComponent implements OnInit {
 
-  public webMenus;
+  public disabled: boolean = false;
+  public status: { isopen: boolean } = { isopen: false };
+  public items: Array<string>;
+  public webMenus: Array<DropdownObject>;
+  public mostClickMenus: Array<DropdownObject>;
+  public lastModifyMenus: Array<DropdownObject>;
+  public recommendMenus: Array<DropdownObject>;
+
 
   constructor(private webMenuService: HeaderWebmenuService) { }
 
@@ -18,11 +27,16 @@ export class HeaderWebmenuComponent implements OnInit {
   }
 
   private getWebMenus() {
-    this.webMenuService.getWebMenus().subscribe(
-      data => { this.webMenus = data },
-      err => console.error(err),
-      () => console.log('done loading webMenu.')
-    );
+    this.webMenus = this.webMenuService.getWebMenus();
+    this.mostClickMenus = this.webMenuService.getMostClickServiceMenus();
+    this.lastModifyMenus = this.webMenuService.getLastModifyServiceMenus();
+    this.recommendMenus = this.webMenuService.getRecommondServiceMenus();
+  }
+
+  public toggleDropdown($event: MouseEvent): void {
+    $event.preventDefault();
+    $event.stopPropagation();
+    this.status.isopen = !this.status.isopen;
   }
 
 }

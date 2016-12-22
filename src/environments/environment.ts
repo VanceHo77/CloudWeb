@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  sourceUrl: "http://localhost:8080/Cloud-io/ServiceItems/getWebMenu"
+  sourceUrl: "http://localhost:8080/Cloud-io/"
 };
