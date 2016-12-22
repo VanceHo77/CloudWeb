@@ -9,6 +9,8 @@
       <ul class="dropdown-menu" dropdownMenu role="menu" aria-labelledby="simple-btn-keyboard-nav">
         <li role="menuitem" *ngFor="let menu of webMenus"><a class="dropdown-item" href="{{menu.uri}}">{{menu.title}}</a></li>
       </ul>
+        <!-- 服務分類 -->
+       <!-- <li  role="menuitem" *ngFor="let menu of category"><a class="dropdown-item" href="#">{{menu}}</a></li> -->
     </li>
     <!-- 熱門服務 -->
     <li class="dropdown" dropdown keyboardNav="true">
@@ -37,81 +39,5 @@
         <li role="menuitem" *ngFor="let menu of recommendMenus"><a class="dropdown-item" href="{{menu.uri}}">{{menu.title}}</a></li>
       </ul>
     </li>
-
-    <!--
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        <span>服務總覽</span>
-        <span class="caret"></span>
-      </a>
-       <!--
-      <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-        <c:forEach items="${navbarMenu}" var="category">
-          <li class="dropdown-submenu">
-            <a href="#" tabindex="-1" title="${category.key.displayLabel}">
-              <i class=""></i>
-              <c:out value="${category.key.displayLabel}" />
-            </a>
-            <ul class="dropdown-menu">
-              <c:forEach items="${category.value}" var="service">
-                <li>
-                  <a href="<c:url value='${service.uri}'/>" class="serviceItem">
-                    <c:out value="${service.label}" />
-                  </a>
-                </li>
-              </c:forEach>
-            </ul>
-          </li>
-        </c:forEach>
-      </ul>
-    </li>-->
-    <!--
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        <span>熱門服務</span>
-        <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu">
-        <c:forEach items="${listByCount}" var="list">
-          <li>
-            <a href="<c:url value='${list.uri}'/> ">
-              <c:out value="${list.label}" />
-            </a>
-          </li>
-        </c:forEach>
-      </ul>
-    </li>-->
-    <!--
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        <span>最新服務</span>
-        <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu">
-        <c:forEach items="${listByDate}" var="list">
-          <li>
-            <a href="<c:url value='${list.uri}'/> ">
-              <c:out value="${list.label}" />
-            </a>
-          </li>
-        </c:forEach>
-      </ul>
-    </li>-->
-    <!--
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        <span>推薦服務</span>
-        <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu">
-        <c:forEach items="${listByRecommand}" var="list">
-          <li>
-            <a href="<c:url value='${list.uri}'/> ">
-              <c:out value="${list.label}" />
-            </a>
-          </li>
-        </c:forEach>
-      </ul>
-    </li>-->
   </ul>
 </div>

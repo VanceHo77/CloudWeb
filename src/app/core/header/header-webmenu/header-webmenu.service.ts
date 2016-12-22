@@ -11,12 +11,13 @@ export class HeaderWebmenuService {
     public disabled: boolean = false;
     public status: { isopen: boolean } = { isopen: false };
 
-    jsonData: any;
-    droupDownMenu: DropdownObject;
-    allServiceData: Array<DropdownObject> = [];
-    mostClickData: Array<DropdownObject> = [];
-    lastModifyData: Array<DropdownObject> = [];
-    recommondData: Array<DropdownObject> = [];
+    private droupDownMenu: DropdownObject;
+    private category: Array<string> = [];
+    private allServiceData: Array<DropdownObject> = [];
+    private mostClickData: Array<DropdownObject> = [];
+    private lastModifyData: Array<DropdownObject> = [];
+    private recommondData: Array<DropdownObject> = [];
+
 
 
     constructor(private http: Http) { }
@@ -41,17 +42,38 @@ export class HeaderWebmenuService {
         return this.getData(this.recommondData, '/ServiceItems/getRecommandMenu');
     }
 
-    private getData(dataObj: any, apiUrl: string) {
+    //服務總覽分類
+    getCategory() {
+        return this.getCategoryData(this.category, '/ServiceItems/getCategory');
+    }
+
+
+    private getData(dataObj, apiUrl: string) {
         var sourceUrl = environment.sourceUrl + apiUrl;
-        this.jsonData = this.http.get(sourceUrl).map((res: Response) => res.json());
-        this.jsonData.subscribe(
+        this.http.get(sourceUrl).map((res: Response) => res.text()).subscribe(
             data => {
                 var category, title, uri;
-                for (var i = 0; i < data.length; i++) {
-                    category = data[i].category;
-                    title = data[i].title;
-                    uri = data[i].label;
+                var json = JSON.parse(data);
+                for (var i = 0; i < json.length; i++) {
+                    category = json[i].category;
+                    title = json[i].title;
+                    uri = json[i].label;
                     dataObj.push(new DropdownObject(category, title, uri));
+                }
+            },
+            err => console.error(err),
+            () => console.log('done loading ' + sourceUrl + '.')
+        );
+        return dataObj;
+    }
+
+    private getCategoryData(dataObj, apiUrl: string) {
+        var sourceUrl = environment.sourceUrl + apiUrl;
+        this.http.get(sourceUrl).map((res: Response) => res.text()).subscribe(
+            data => {
+                var json = JSON.parse(data);
+                for (var i = 0; i < json.length; i++) {
+                    dataObj.push(json[i]);
                 }
             },
             err => console.error(err),

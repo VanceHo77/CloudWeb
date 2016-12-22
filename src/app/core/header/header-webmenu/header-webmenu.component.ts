@@ -13,7 +13,7 @@ export class HeaderWebmenuComponent implements OnInit {
 
   public disabled: boolean = false;
   public status: { isopen: boolean } = { isopen: false };
-  public items: Array<string>;
+  public category: string[];
   public webMenus: Array<DropdownObject>;
   public mostClickMenus: Array<DropdownObject>;
   public lastModifyMenus: Array<DropdownObject>;
@@ -31,6 +31,7 @@ export class HeaderWebmenuComponent implements OnInit {
     this.mostClickMenus = this.webMenuService.getMostClickServiceMenus();
     this.lastModifyMenus = this.webMenuService.getLastModifyServiceMenus();
     this.recommendMenus = this.webMenuService.getRecommondServiceMenus();
+    this.category = this.webMenuService.getCategory();
   }
 
   public toggleDropdown($event: MouseEvent): void {
