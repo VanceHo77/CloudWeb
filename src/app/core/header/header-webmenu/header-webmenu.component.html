@@ -6,11 +6,19 @@
       <a id="simple-btn-keyboard-nav" type="button" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
         aria-expanded="false" dropdownToggle>服務總覽 <span class="caret"></span>
       </a>
-      <ul class="dropdown-menu" dropdownMenu role="menu" aria-labelledby="simple-btn-keyboard-nav">
-        <li role="menuitem" *ngFor="let menu of webMenus"><a class="dropdown-item" href="{{menu.uri}}">{{menu.title}}</a></li>
+
+      <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+        <li class="dropdown-submenu" *ngFor="let category of categorys">
+          <a href="#" tabindex="-1" title="{{category}}">
+            {{category}}
+          </a>
+          <ul class="dropdown-menu" dropdownMenu role="menu" aria-labelledby="simple-btn-keyboard-nav">
+            <li role="menuitem" *ngFor="let menu of webMenus">
+              <a class="dropdown-item" *ngIf="category==menu.category" href="{{menu.uri}}">{{menu.title}}</a>
+            </li>
+          </ul>
+        </li>
       </ul>
-        <!-- 服務分類 -->
-       <!-- <li  role="menuitem" *ngFor="let menu of category"><a class="dropdown-item" href="#">{{menu}}</a></li> -->
     </li>
     <!-- 熱門服務 -->
     <li class="dropdown" dropdown keyboardNav="true">
