@@ -1,3 +1,4 @@
+import { AppService } from './app.service';
 import { coreGroupModules } from './core/core-group.module';
 import { DropdownModule } from './core/ui/dropdown/dropdown.module';
 import { coreGroupComponents } from './core/core-group.component';
@@ -22,7 +23,7 @@ import { NgModule } from '@angular/core';
     AppRoutingModule,
     coreGroupModules
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

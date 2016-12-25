@@ -58,7 +58,7 @@ export class HeaderWebmenuService {
                     category = json[i].category;
                     title = json[i].title;
                     uri = json[i].uri;
-                    dataObj.push(new DropdownObject(category, title, uri));
+                    dataObj.push(new DropdownObject(category, title, uri, ''));
                 }
             },
             err => console.error(err),
