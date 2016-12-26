@@ -14,8 +14,8 @@
           </a>
           <ul class="dropdown-menu" dropdownMenu role="menu" aria-labelledby="simple-btn-keyboard-nav">
             <li role="menuitem" *ngFor="let menu of webMenus">
-              <a class="dropdown-item" *ngIf="category==menu.category" routerLink="{{menu.uri}}">{{menu.title}}</a>
-            </li>
+              <a class="dropdown-item" *ngIf="category==menu.category" [routerLink]="[menu.uri, menu.title]">{{menu.title}}</a>
+              
           </ul>
         </li>
       </ul>
@@ -26,7 +26,7 @@
         aria-expanded="false" dropdownToggle>熱門服務 <span class="caret"></span>
       </a>
       <ul class="dropdown-menu" dropdownMenu role="menu" aria-labelledby="simple-btn-keyboard-nav">
-        <li role="menuitem" *ngFor="let menu of mostClickMenus"><a class="dropdown-item" routerLink="{{menu.uri}}">{{menu.title}}</a></li>
+        <li role="menuitem" *ngFor="let menu of mostClickMenus"><a class="dropdown-item" [routerLink]="[menu.uri, menu.title]">{{menu.title}}</a></li>
       </ul>
     </li>
     <!-- 最新服務< -->
@@ -35,7 +35,7 @@
         aria-expanded="false" dropdownToggle>最新服務 <span class="caret"></span>
       </a>
       <ul class="dropdown-menu" dropdownMenu role="menu" aria-labelledby="simple-btn-keyboard-nav">
-        <li role="menuitem" *ngFor="let menu of lastModifyMenus"><a class="dropdown-item" routerLink="{{menu.uri}}">{{menu.title}}</a></li>
+        <li role="menuitem" *ngFor="let menu of lastModifyMenus"><a class="dropdown-item" [routerLink]="[menu.uri, menu.title]">{{menu.title}}</a></li>
       </ul>
     </li>
     <!-- 推薦服務 -->
@@ -44,7 +44,7 @@
         aria-expanded="false" dropdownToggle>推薦服務 <span class="caret"></span>
       </a>
       <ul class="dropdown-menu" dropdownMenu role="menu" aria-labelledby="simple-btn-keyboard-nav">
-        <li role="menuitem" *ngFor="let menu of recommendMenus"><a class="dropdown-item"routerLink="{{menu.uri}}">{{menu.title}}</a></li>
+        <li role="menuitem" *ngFor="let menu of recommendMenus"><a class="dropdown-item" [routerLink]="[menu.uri, menu.title]">{{menu.title}}</a></li>
       </ul>
     </li>
   </ul>

@@ -1,3 +1,5 @@
+import { WelfareComponent } from './serviceItems/welfare/welfare.component';
+import { welfareGroupComponents } from './serviceItems/welfare/welfare-group.component';
 import { HeaderWebmenuComponent } from './header/header-webmenu/header-webmenu.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -11,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { IndexComponent } from './index/index.component';
-import { LegalAdviceComponent } from './serviceItems/welfare/legal-advice/legal-advice.component';
+import { DetailComponent } from './serviceItems/welfare/legal-advice/detail/detail.component';
 
 
 @NgModule({
@@ -21,15 +23,19 @@ import { LegalAdviceComponent } from './serviceItems/welfare/legal-advice/legal-
     HeaderWebmenuComponent,
     FooterComponent,
     IndexComponent,
-    LegalAdviceComponent
+    welfareGroupComponents,
+    DetailComponent,
+    WelfareComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    // Core
+    coreGroupModules,
+    // Router
     RouterModule,
-    AppRoutingModule,
-    coreGroupModules
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
