@@ -1,12 +1,12 @@
-import { environment } from './../environments/environment';
-import { DropdownObject } from './core/ui/dropdown/dropdown-object';
+import { environment } from './../../environments/environment';
+import { DropdownObject } from './../core/ui/dropdown/dropdown-object';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from "@angular/http";
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class AppService {
+export class IndexService {
 
     private category: Array<string> = [];
     private allServiceHighLightData: Array<DropdownObject> = [];

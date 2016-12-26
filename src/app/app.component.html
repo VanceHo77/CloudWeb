@@ -1,20 +1,6 @@
 <!-- Header -->
 <app-header></app-header>
-<!-- bigslider -->
-<div class="bigslider">
-  <div class="content">
-    <img src="../resources/images/bigslider.png" alt="">
-  </div>
-</div>
-<!-- Service highlights -->
-<section class="service-highlights">
-  <div class="content">
-    <div class="grid-menu" *ngFor="let item of allServiceHighLights">
-      <a href="{{item.uri}}">
-        <img src="{{item.imgUrl}}" alt="{{item.title}}">
-      </a>
-    </div>
-  </div>
-</section>
+<!-- Content-->
 <router-outlet></router-outlet>
+<!-- Footer-->
 <app-footer></app-footer>

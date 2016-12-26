@@ -1,7 +1,6 @@
 import { HeaderWebmenuComponent } from './header/header-webmenu/header-webmenu.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { AppService } from './app.service';
 import { coreGroupModules } from './core/core-group.module';
 import { DropdownModule } from './core/ui/dropdown/dropdown.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +10,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
+import { IndexComponent } from './index/index.component';
+import { LegalAdviceComponent } from './serviceItems/welfare/legal-advice/legal-advice.component';
 
 
 @NgModule({
@@ -18,7 +19,9 @@ import { NgModule } from '@angular/core';
     AppComponent,
     HeaderComponent,
     HeaderWebmenuComponent,
-    FooterComponent
+    FooterComponent,
+    IndexComponent,
+    LegalAdviceComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,7 @@ import { NgModule } from '@angular/core';
     AppRoutingModule,
     coreGroupModules
   ],
-  providers: [AppService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
