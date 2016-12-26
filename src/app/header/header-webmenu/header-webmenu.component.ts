@@ -1,4 +1,5 @@
-import { DropdownObject } from './../../ui/dropdown/dropdown-object';
+import { DropdownObject } from './../../core/ui/dropdown/dropdown-object';
+
 import { HeaderWebmenuService } from './header-webmenu.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Rx';

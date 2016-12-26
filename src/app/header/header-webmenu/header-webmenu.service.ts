@@ -1,5 +1,5 @@
-import { DropdownObject } from './../../ui/dropdown/dropdown-object';
-import { environment } from './../../../../environments/environment';
+import { environment } from './../../../environments/environment';
+import { DropdownObject } from './../../core/ui/dropdown/dropdown-object';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from "@angular/http";
 import { Observable } from 'rxjs/Rx';

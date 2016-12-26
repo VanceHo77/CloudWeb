@@ -1,7 +1,9 @@
+import { HeaderWebmenuComponent } from './header/header-webmenu/header-webmenu.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 import { AppService } from './app.service';
 import { coreGroupModules } from './core/core-group.module';
 import { DropdownModule } from './core/ui/dropdown/dropdown.module';
-import { coreGroupComponents } from './core/core-group.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -10,10 +12,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    coreGroupComponents
+    HeaderComponent,
+    HeaderWebmenuComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
