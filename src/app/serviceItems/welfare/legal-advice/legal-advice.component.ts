@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,15 +11,17 @@ export class LegalAdviceComponent {
   serviceName: string;
   sub;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router) { }
 
-  private ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-      this.serviceName = params['serviceName'];
-      console.log(params['serviceName']);
+  ngOnInit() {
+    this.sub = this.route.queryParams.subscribe(params => {
+      this.serviceName = params['sname'];
     });
   }
-  private ngOnDestroy() {
+  ngOnDestroy() {
     this.sub.unsubscribe();
   }
+
 }

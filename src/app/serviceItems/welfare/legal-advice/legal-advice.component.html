@@ -7,4 +7,6 @@
       {{serviceName}}
     </h1>
   </div>
+  <a [routerLink]="['/official/legalAdvice/detail']" [queryParams]="{ sname: serviceName }">Detail</a>
+  <router-outlet></router-outlet>
 </div>
