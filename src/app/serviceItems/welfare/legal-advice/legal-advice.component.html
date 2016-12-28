@@ -1,3 +1,12 @@
-
-  <a [routerLink]="['/official/legalAdvice/detail']">Detail</a>
+<div class="subpage-header">
+  <div class="content">
+    <div class="subpage-header-icon">
+      <img src="./../resources/images/subpage-top-icon.png">
+    </div>
+    <h1>
+      {{serviceName}}
+    </h1>
+  </div>
+  <a [routerLink]="['/official/legalAdvice/detail']" [queryParams]="{ sname: serviceName }">Detail</a>
   <router-outlet></router-outlet>
+</div>

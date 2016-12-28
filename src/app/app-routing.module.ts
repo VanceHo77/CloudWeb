@@ -12,10 +12,7 @@ const routes: Routes = [
   {
     path: 'index', component: IndexComponent
   },
-  ...WelfareRoutes,
-  {
-    path: '**', redirectTo: '/index', pathMatch: 'full'
-  }
+  ...WelfareRoutes
 ];
 
 @NgModule({
