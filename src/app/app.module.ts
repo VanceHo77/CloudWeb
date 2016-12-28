@@ -3,7 +3,7 @@ import { welfareGroupComponents } from './serviceItems/welfare/welfare-group.com
 import { HeaderWebmenuComponent } from './header/header-webmenu/header-webmenu.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { coreGroupModules } from './core/core-group.module';
+import { CoreGroupClass } from './core/core-group.class';
 import { DropdownModule } from './core/ui/dropdown/dropdown.module';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
@@ -19,6 +19,7 @@ import { DetailComponent } from './serviceItems/welfare/legal-advice/detail/deta
 @NgModule({
   declarations: [
     AppComponent,
+    CoreGroupClass.coreGroupComponents,
     HeaderComponent,
     HeaderWebmenuComponent,
     FooterComponent,
@@ -32,7 +33,7 @@ import { DetailComponent } from './serviceItems/welfare/legal-advice/detail/deta
     FormsModule,
     HttpModule,
     // Core
-    coreGroupModules,
+    CoreGroupClass.coreGroupModules,
     // Router
     RouterModule,
     AppRoutingModule

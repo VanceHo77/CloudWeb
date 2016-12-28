@@ -1,3 +1,27 @@
 <div id="pageContent">
-  <router-outlet></router-outlet>
+  <div class="subpage-header">
+    <div class="content">
+      <div class="subpage-header-icon">
+        <img src="./../resources/images/subpage-top-icon.png">
+      </div>
+      <h1>
+        {{serviceName}}
+      </h1>
+    </div>
+  </div>
+  <div class="content">
+    <!-- 導航列 -->
+    <nav>
+      <ol class="breadcrumb">
+        <li>
+          <a [routerLink]="['/']">服務雲首頁</a>
+        </li>
+        <li class="active">
+          {{serviceName}}
+        </li>
+      </ol>
+    </nav>
+    <!-- ServiceContent-->
+    <router-outlet></router-outlet>
+  </div>
 </div>

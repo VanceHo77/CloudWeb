@@ -1,5 +1,5 @@
 import { welfareGroupComponents } from './welfare-group.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,5 +8,20 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: []
 })
 export class WelfareComponent {
-    constructor() { }
+    serviceName: string;
+    sub;
+
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router) { }
+
+    ngOnInit() {
+        this.sub = this.route.queryParams.subscribe(params => {
+            this.serviceName = params['sname'];
+        });
+    }
+    ngOnDestroy() {
+        this.sub.unsubscribe();
+    }
+
 }
