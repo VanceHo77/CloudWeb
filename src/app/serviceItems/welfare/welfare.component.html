@@ -11,16 +11,7 @@
   </div>
   <div class="content">
     <!-- 導航列 -->
-    <nav>
-      <ol class="breadcrumb">
-        <li>
-          <a [routerLink]="['/']">服務雲首頁</a>
-        </li>
-        <li class="active">
-          {{serviceName}}
-        </li>
-      </ol>
-    </nav>
+    <app-crumbs></app-crumbs>
     <!-- ServiceContent-->
     <router-outlet></router-outlet>
   </div>
