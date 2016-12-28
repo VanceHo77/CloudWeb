@@ -1,5 +1,4 @@
-import { WelfareComponent } from './serviceItems/welfare/welfare.component';
-import { welfareGroupComponents } from './serviceItems/welfare/welfare-group.component';
+import { WelfareGroupClass } from './serviceItems/welfare/welfare-group.class';
 import { HeaderWebmenuComponent } from './header/header-webmenu/header-webmenu.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -13,7 +12,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { IndexComponent } from './index/index.component';
-import { DetailComponent } from './serviceItems/welfare/legal-advice/detail/detail.component';
 
 
 @NgModule({
@@ -24,9 +22,7 @@ import { DetailComponent } from './serviceItems/welfare/legal-advice/detail/deta
     HeaderWebmenuComponent,
     FooterComponent,
     IndexComponent,
-    welfareGroupComponents,
-    DetailComponent,
-    WelfareComponent
+    WelfareGroupClass.welfareGroupComponents,
   ],
   imports: [
     BrowserModule,

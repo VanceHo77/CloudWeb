@@ -1,4 +1,3 @@
-import { welfareGroupComponents } from './welfare-group.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 

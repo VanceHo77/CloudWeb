@@ -31,7 +31,6 @@ export class IndexService {
                     uri = json[i].uri;
                     imgUrl = json[i].imgUrl;
                     dataObj.push(new DropdownObject(category, title, uri, imgUrl));
-                    console.log(dataObj)
                 }
             },
             err => console.error(err),
