@@ -1,7 +1,8 @@
+import { AppService } from './../../app.service';
 import { DropdownObject } from './../../core/ui/dropdown/dropdown-object';
 
 import { HeaderWebmenuService } from './header-webmenu.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
 
@@ -19,7 +20,6 @@ export class HeaderWebmenuComponent implements OnInit {
   public mostClickMenus: Array<DropdownObject>;
   public lastModifyMenus: Array<DropdownObject>;
   public recommendMenus: Array<DropdownObject>;
-
 
   constructor(private webMenuService: HeaderWebmenuService) { }
 
@@ -39,6 +39,10 @@ export class HeaderWebmenuComponent implements OnInit {
     $event.preventDefault();
     $event.stopPropagation();
     this.status.isopen = !this.status.isopen;
+  }
+
+  itemClickEvent(sname: string) {
+    AppService.serviceItemName = sname;
   }
 
 }
