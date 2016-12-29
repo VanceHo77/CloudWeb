@@ -1,6 +1,5 @@
 import { LegalAdviceService } from './legal-advice.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
 @Component({
@@ -11,18 +10,19 @@ import { Observable } from 'rxjs/Rx';
 })
 export class LegalAdviceComponent {
 
-  serviceName: string;
+  private serviceName: string;
+  private content;
+  private number;
+  private totalElements;
+  private totalPages;
+  
   sub;
-  public jsonContent;
 
-  constructor(private route: ActivatedRoute, private router: Router, private legalAdviceService: LegalAdviceService) { }
+
+  constructor(private legalAdviceService: LegalAdviceService) { }
 
   ngOnInit() {
-    this.sub = this.route.queryParams.subscribe(params => {
-      this.serviceName = params['sname'];
-    });
-    this.jsonContent = this.getData();
-    console.log(this.getData());
+    this.getData();
   }
 
   ngOnDestroy() {
@@ -30,8 +30,11 @@ export class LegalAdviceComponent {
   }
 
   getData() {
-    this.legalAdviceService.getLegalAdvice().subscribe(
-      data => { this.jsonContent = data.content },
+    this.sub = this.legalAdviceService.getLegalAdvice().subscribe(
+      data => {
+        this.content = data.content;
+        console.log(data.content);
+      },
       err => console.error(err),
       () => console.log('done loading legal-advice')
     );

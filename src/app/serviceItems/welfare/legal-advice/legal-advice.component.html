@@ -1,3 +1,18 @@
-<div *ngFor="let data of jsonContent">
-  <p>{{data}}</p>
-</div>
+<table class="table table-bordered table-hover table-responsive table-striped">
+  <thead>
+    <tr>
+      <th width="15%">服務處所</th>
+      <th width="30%">服務時間</th>
+      <th width="25%">聯絡電話</th>
+      <th width="30%">地址</th>
+    </tr>
+  </thead>
+  <tbody id="tableList" *ngFor="let data of content">
+    <tr>
+      <td>{{data.department}}</td>
+      <td>{{data.serviceHours}}</td>
+      <td>{{data.telephone}}</td>
+      <td>{{data.address}}</td>
+    </tr>
+  </tbody>
+</table>

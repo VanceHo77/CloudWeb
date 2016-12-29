@@ -31,7 +31,7 @@ export class WelfareComponent {
                 }
             },
             err => console.error(err),
-            () => console.log('done loading WebMenus')
+            () => console.log('done search ServiceName')
         );
     }
     ngOnDestroy() {
