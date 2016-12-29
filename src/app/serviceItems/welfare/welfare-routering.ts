@@ -1,4 +1,3 @@
-import { DetailComponent } from './legal-advice/detail/detail.component';
 import { NgModule } from '@angular/core';
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -12,11 +11,7 @@ export const WelfareRoutes: Routes = [
     children: [
       { path: '' },
       {
-        path: 'legalAdvice', component: LegalAdviceComponent,
-        children: [
-          { path: '' },
-          { path: 'detail', component: DetailComponent }
-        ]
+        path: 'legalAdvice', component: LegalAdviceComponent
       }
     ]
   }

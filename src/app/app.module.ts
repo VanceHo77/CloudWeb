@@ -2,7 +2,7 @@ import { WelfareGroupClass } from './serviceItems/welfare/welfare-group.class';
 import { HeaderWebmenuComponent } from './header/header-webmenu/header-webmenu.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { CoreGroupClass } from './core/core-group.class';
+import { COREGROUPCOMPONENT,COREGROUPMODULES } from './core/core-group.class';
 import { DropdownModule } from './core/ui/dropdown/dropdown.module';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
@@ -17,7 +17,7 @@ import { IndexComponent } from './index/index.component';
 @NgModule({
   declarations: [
     AppComponent,
-    CoreGroupClass.coreGroupComponents,
+    COREGROUPCOMPONENT,
     HeaderComponent,
     HeaderWebmenuComponent,
     FooterComponent,
@@ -29,7 +29,7 @@ import { IndexComponent } from './index/index.component';
     FormsModule,
     HttpModule,
     // Core
-    CoreGroupClass.coreGroupModules,
+    COREGROUPMODULES,
     // Router
     RouterModule,
     AppRoutingModule

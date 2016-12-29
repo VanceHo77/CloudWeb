@@ -1,4 +1,3 @@
-import { DropdownObject } from './../core/ui/dropdown/dropdown-object';
 import { IndexService } from './index.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-  public allServiceHighLights: Array<DropdownObject>;
+  public allServiceHighLights;
+  sub;
 
   constructor(private appService: IndexService) { }
 
@@ -18,7 +18,15 @@ export class IndexComponent implements OnInit {
     this.getServiceHighLights();
   }
 
+  ngOnDestroy(){
+    this.sub.unsubscribe();
+  }
+
   getServiceHighLights() {
-    this.allServiceHighLights = this.appService.getServiceHighlights();
+    this.sub = this.appService.getServiceHighlights().subscribe(
+      data => { this.allServiceHighLights = data },
+      err => console.error(err),
+      () => console.log('done loading ServiceHighlights')
+    );
   }
 }

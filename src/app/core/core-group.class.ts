@@ -1,18 +1,9 @@
+import { NgModule, Component } from '@angular/core';
 import { CrumbsComponent } from './ui/crumbs/crumbs.component';
 import { DropdownModule } from './ui/dropdown/dropdown.module';
 
 /* Component */
-const CRUMBS: Array<any> = [CrumbsComponent];
+export const COREGROUPCOMPONENT: Array<Component> = [CrumbsComponent];
 
 /* Module */
-const UI: Array<any> = [DropdownModule];
-
-
-export class CoreGroupClass {
-
-    /* Component */
-    static coreGroupComponents = CRUMBS;
-
-    /* Module */
-    static coreGroupModules = UI;
-} 
+export const COREGROUPMODULES: Array<NgModule> = [DropdownModule];

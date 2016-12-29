@@ -1,4 +1,4 @@
-export class DropdownObject {
+export class WebMenu {
     category: string;
     title: string;
     uri: string;
