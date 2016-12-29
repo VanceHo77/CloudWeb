@@ -1,4 +1,4 @@
-export class WebMenu {
+export class Pagination {
     category: string;
     title: string;
     uri: string;

@@ -1,17 +1,26 @@
+import { URLSearchParams, RequestOptions } from '@angular/http';
 import { environment } from './../../../../environments/environment';
 import { Response } from '@angular/http';
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
-const SourceUrl: string = environment.sourceUrl + '/official/legalAdvice';
+const SourceUrl: string = environment.sourceUrl + '/official/legalAdvice?';
 
 @Injectable()
 export class LegalAdviceService {
 
   constructor(private http: Http) { }
 
-  getLegalAdvice() {
-    return this.http.get(SourceUrl).map((res: Response) => res.json());
+  getLegalAdvice(pageNum: number, pageSize: number) {
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('page', pageNum.toString());
+    params.set('pageSize', pageSize.toString());
+
+    //變更Url
+    var obj = { Title: 'LegalAdviceService', Url: location.pathname + '?' + params.toString() };
+    history.pushState(obj, obj.Title, obj.Url);
+
+    return this.http.get(SourceUrl, new RequestOptions({ search: params })).map((res: Response) => res.json());
   }
 }
