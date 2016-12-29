@@ -33,7 +33,6 @@ export class LegalAdviceComponent {
     this.sub = this.legalAdviceService.getLegalAdvice().subscribe(
       data => {
         this.content = data.content;
-        console.log(data.content);
       },
       err => console.error(err),
       () => console.log('done loading legal-advice')
