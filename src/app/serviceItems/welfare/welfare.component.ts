@@ -1,3 +1,4 @@
+import { AppService } from './../../app.service';
 import { HeaderWebmenuService } from './../../header/header-webmenu/header-webmenu.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -6,13 +7,17 @@ import { Component, OnInit } from '@angular/core';
     selector: '',
     templateUrl: './welfare.component.html',
     styleUrls: [],
-    providers: [HeaderWebmenuService]
+    providers: [HeaderWebmenuService, AppService]
 })
 export class WelfareComponent {
     serviceName: string;
     sub;
 
-    constructor(private route: ActivatedRoute, private router: Router, public webmenuService: HeaderWebmenuService) { }
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        public webmenuService: HeaderWebmenuService,
+        public appService:AppService) { }
 
     ngOnInit() {
         this.sub = this.webmenuService.getWebMenus().subscribe(
@@ -21,6 +26,7 @@ export class WelfareComponent {
                 for (var i = 0; i < data.length; i++) {
                     if (locationUrl == data[i].uri) {
                         this.serviceName = data[i].title;
+                        this.appService.currentServiceName = this.serviceName;
                     }
                 }
             },

@@ -1,4 +1,4 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { AppService } from './../../../app.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,22 +6,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './crumbs.component.html',
   styleUrls: ['./crumbs.component.css']
 })
-export class CrumbsComponent implements OnInit {
+export class CrumbsComponent {
 
   serviceName: string;
-  sub;
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router) { }
-
-  ngOnInit() {
-    this.sub = this.route.queryParams.subscribe(params => {
-      this.serviceName = params['sname'];
-    });
-  }
-  ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
+  constructor(public appService: AppService) {}
 
 }
