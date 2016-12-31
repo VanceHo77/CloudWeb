@@ -1,5 +1,4 @@
 import { AppService } from './../../app.service';
-import { WebMenu } from './../../shared/webmenu.class.';
 import { environment } from './../../../environments/environment';
 
 import { Injectable } from '@angular/core';
@@ -12,15 +11,7 @@ export class HeaderWebmenuService {
 
     public disabled: boolean = false;
     public status: { isopen: boolean } = { isopen: false };
-
-    private category: Array<string> = [];
-    private allServiceData: Array<WebMenu> = [];
-    private mostClickData: Array<WebMenu> = [];
-    private lastModifyData: Array<WebMenu> = [];
-    private recommondData: Array<WebMenu> = [];
-
-
-
+    
     constructor(private http: Http) { }
 
     //服務總覽

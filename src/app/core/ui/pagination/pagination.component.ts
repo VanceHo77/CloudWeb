@@ -30,8 +30,8 @@ export interface PageChangedEvent {
 }
 
 const paginationConfig:PaginationConfig = {
-  maxSize: void 0,
-  itemsPerPage: 10,
+  maxSize: void 20,
+  itemsPerPage: 20,
   boundaryLinks: false,
   directionLinks: true,
   firstText: 'First',

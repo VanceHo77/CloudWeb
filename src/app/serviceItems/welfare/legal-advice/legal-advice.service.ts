@@ -12,12 +12,10 @@ export class LegalAdviceService {
 
   constructor(private http: Http) { }
 
-  getLegalAdvice(pageNum: number, pageSize: number) {
+  getLegalAdvice(pageNum: number) {
     let params: URLSearchParams = new URLSearchParams();
     params.set('page', pageNum.toString());
-    params.set('pageSize', pageSize.toString());
-
-    //變更Url
+     //變更Url
     var obj = { Title: 'LegalAdviceService', Url: location.pathname + '?' + params.toString() };
     history.pushState(obj, obj.Title, obj.Url);
 

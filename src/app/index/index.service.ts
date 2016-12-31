@@ -1,4 +1,3 @@
-import { WebMenu } from './../shared/webmenu.class.';
 import { environment } from './../../environments/environment';
 
 import { Injectable } from '@angular/core';
@@ -10,7 +9,6 @@ import 'rxjs/add/operator/map';
 export class IndexService {
 
     private category: Array<string> = [];
-    private allServiceHighLightData: Array<WebMenu> = [];
 
     constructor(private http: Http) { }
 

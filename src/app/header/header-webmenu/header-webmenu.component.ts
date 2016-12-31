@@ -1,4 +1,3 @@
-import { WebMenu } from './../../shared/webmenu.class.';
 import { AppService } from './../../app.service';
 
 import { HeaderWebmenuService } from './header-webmenu.service';

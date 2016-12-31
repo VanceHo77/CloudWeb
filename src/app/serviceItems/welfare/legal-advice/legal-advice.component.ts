@@ -1,7 +1,11 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { LegalAdviceService } from './legal-advice.service';
-import { Component } from '@angular/core';
+import { Component, enableProdMode } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
+
+// 在Component中連續修改同一個值，會產生錯誤(Expression has changed after it was checked.)
+//需要加入enableProdMode();
+enableProdMode();
 
 @Component({
   selector: '',
@@ -21,7 +25,6 @@ export class LegalAdviceComponent {
   //Pagination
   public totalItems: number;
   public currentPage: number = 0;
-  public maxSize: number = 10;
 
   constructor(
     private legalAdviceService: LegalAdviceService,
@@ -33,12 +36,9 @@ export class LegalAdviceComponent {
     this.sub = this.route.queryParams.subscribe(params => {
       var page;
       if (params['page'] != null) {
-        page = parseInt(params['page']);
+        this.currentPage = parseInt(params['page']);
       }
-      if (params['pageSize'] != null) {
-        this.maxSize = parseInt(params['pageSize']);
-      }
-      this.getData(this.currentPage, this.maxSize);
+      this.getData(this.currentPage);
     });
   }
 
@@ -48,17 +48,16 @@ export class LegalAdviceComponent {
 
   public pageChanged(event: any): void {
     this.sub = this.route.queryParams.subscribe(params => {
-      this.getData(event.page, this.maxSize);
+      this.getData(event.page);
     });
   };
 
 
-  getData(pageNum: number, pageSize: number) {
-    this.sub = this.legalAdviceService.getLegalAdvice(pageNum, pageSize).subscribe(
+  getData(pageNum: number) {
+    this.sub = this.legalAdviceService.getLegalAdvice(pageNum).subscribe(
       data => {
         this.totalItems = data.totalElements;
         this.currentPage = parseInt(data.number) + 1;
-        this.maxSize = data.size;
         this.content = data.content;
         console.log('curpage:' + parseInt(data.number));
       },
