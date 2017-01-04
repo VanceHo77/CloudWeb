@@ -1,3 +1,4 @@
+import { StrongSkillsComponent } from './strong-skills/strong-skills.component';
 import { NgModule } from '@angular/core';
 import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -12,6 +13,14 @@ export const WelfareRoutes: Routes = [
       { path: '' },
       {
         path: 'legalAdvice', component: LegalAdviceComponent
+      }
+    ]
+  }, {
+    path: 'welfare', component: WelfareComponent,
+    children: [
+      { path: '' },
+      {
+        path: 'strongSkills', component: StrongSkillsComponent
       }
     ]
   }

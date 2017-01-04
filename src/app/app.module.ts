@@ -1,4 +1,4 @@
-import { WelfareGroupClass } from './serviceItems/welfare/welfare-group.class';
+import { WELFAREGROUP } from './serviceItems/welfare/welfare-group.class';
 import { HeaderWebmenuComponent } from './header/header-webmenu/header-webmenu.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -22,7 +22,7 @@ import { IndexComponent } from './index/index.component';
     HeaderWebmenuComponent,
     FooterComponent,
     IndexComponent,
-    WelfareGroupClass.welfareGroupComponents,
+    WELFAREGROUP,
   ],
   imports: [
     BrowserModule,

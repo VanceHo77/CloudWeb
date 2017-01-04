@@ -1,3 +1,4 @@
+import { HistoryService } from './../../../core/history/history.Service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LegalAdviceService } from './legal-advice.service';
 import { Component, enableProdMode } from '@angular/core';
@@ -11,7 +12,7 @@ enableProdMode();
   selector: '',
   templateUrl: './legal-advice.component.html',
   styleUrls: ['./legal-advice.component.css'],
-  providers: [LegalAdviceService]
+  providers: [HistoryService, LegalAdviceService]
 })
 export class LegalAdviceComponent {
 
@@ -24,7 +25,7 @@ export class LegalAdviceComponent {
 
   //Pagination
   public totalItems: number;
-  public currentPage: number = 0;
+  public currentPage: number = 1;
 
   constructor(
     private legalAdviceService: LegalAdviceService,
@@ -35,8 +36,10 @@ export class LegalAdviceComponent {
   ngOnInit() {
     this.sub = this.route.queryParams.subscribe(params => {
       var page;
-      if (params['page'] != null) {
-        this.currentPage = parseInt(params['page']);
+      if (params['page'] == null) {
+        page = this.currentPage;
+      } else {
+        page = parseInt(params['page']);
       }
       this.getData(this.currentPage);
     });
