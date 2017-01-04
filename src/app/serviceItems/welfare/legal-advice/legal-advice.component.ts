@@ -59,7 +59,6 @@ export class LegalAdviceComponent {
         this.totalItems = data.totalElements;
         this.currentPage = parseInt(data.number) + 1;
         this.content = data.content;
-        console.log('curpage:' + parseInt(data.number));
       },
       err => console.error(err),
       () => console.log('done loading legal-advice')

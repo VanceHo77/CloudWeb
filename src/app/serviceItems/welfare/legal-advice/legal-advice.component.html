@@ -10,7 +10,7 @@
   <tbody id="tableList">
     <tr *ngFor="let data of content">
       <td>{{data.department}}</td>
-      <td>{{data.serviceHours}}</td>
+      <td [innerHTML]="data.serviceHours"></td>
       <td>{{data.telephone}}</td>
       <td>{{data.address}}</td>
     </tr>
