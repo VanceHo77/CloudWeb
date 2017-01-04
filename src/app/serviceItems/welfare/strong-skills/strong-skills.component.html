@@ -20,8 +20,9 @@
     </tr>
   </thead>
   <tbody id="tableList">
-    <tr *ngFor="let data of content">
-      <td>{{data.name}}</td>
+    <tr  class="block" *ngFor="let data of content" (click)="showDetail(id.innerHTML,name.innerHTML)">
+      <td #id style="display: none;">{{data.id}}</td>
+      <td #name>{{data.name}}</td>
       <td>{{data.department}}</td>
       <td>{{data.telephone}}</td>
       <td>{{data.address}}</td>

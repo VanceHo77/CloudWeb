@@ -1,3 +1,4 @@
+import { StrongSkillsDetailComponent } from './strong-skills/detail/strong-skills-detail.component';
 import { StrongSkillsComponent } from './strong-skills/strong-skills.component';
 import { NgModule } from '@angular/core';
 import { ModuleWithProviders } from '@angular/core';
@@ -21,6 +22,9 @@ export const WelfareRoutes: Routes = [
       { path: '' },
       {
         path: 'strongSkills', component: StrongSkillsComponent
+      },
+      {
+        path: 'strongSkills/detail', component: StrongSkillsDetailComponent
       }
     ]
   }

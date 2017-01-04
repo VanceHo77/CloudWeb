@@ -1,5 +1,3 @@
-import { AppService } from './../../app.service';
-
 import { HeaderWebmenuService } from './header-webmenu.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
@@ -8,8 +6,7 @@ import { Observable } from 'rxjs/Rx';
 @Component({
   selector: 'app-header-webmenu',
   templateUrl: './header-webmenu.component.html',
-  styleUrls: ['./header-webmenu.component.css'],
-  providers: [AppService]
+  styleUrls: ['./header-webmenu.component.css']
 })
 export class HeaderWebmenuComponent implements OnInit {
 

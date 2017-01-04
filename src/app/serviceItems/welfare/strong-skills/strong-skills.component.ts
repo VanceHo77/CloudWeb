@@ -1,3 +1,4 @@
+import { AppService } from './../../../app.service';
 import { URLSearchParams } from '@angular/http';
 import { HistoryService } from './../../../core/history/history.Service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,7 +14,7 @@ enableProdMode();
   selector: 'app-strong-skills',
   templateUrl: './strong-skills.component.html',
   styleUrls: ['./strong-skills.component.css'],
-  providers: [HistoryService, StrongSkillsService]
+  providers: [AppService, HistoryService, StrongSkillsService]
 })
 export class StrongSkillsComponent implements OnInit {
 
@@ -28,9 +29,9 @@ export class StrongSkillsComponent implements OnInit {
   public totalItems: number;
   public currentPage: number = 1;
 
-
   constructor(
     private strongSkillsService: StrongSkillsService,
+    public appService: AppService,
     private route: ActivatedRoute,
     private router: Router) { }
 
@@ -53,6 +54,11 @@ export class StrongSkillsComponent implements OnInit {
     this.sub.unsubscribe();
   }
 
+  public showDetail(id: string, itemName: string) {
+    AppService.itemName = itemName;
+    this.router.navigateByUrl('/welfare/strongSkills/detail?id=' + id);
+  }
+
   public pageChanged(queryStr: string, event: any): void {
     this.getData(event.page, queryStr);
   };
@@ -64,7 +70,6 @@ export class StrongSkillsComponent implements OnInit {
   public enterQuery(event: Event) {
     this.getData(this.currentPage.toString(), (<HTMLInputElement>event.target).value.trim());
   }
-
 
   getData(page: string, queryStr: string) {
     let params: URLSearchParams = new URLSearchParams();

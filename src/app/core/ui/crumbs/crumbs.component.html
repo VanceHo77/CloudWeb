@@ -4,8 +4,11 @@
     <li>
       <a [routerLink]="['/']">服務雲首頁</a>
     </li>
-    <li class="active">
-      {{appService.currentServiceName}}
+    <li *ngIf="appService.itemName==null" class="active">
+      {{appService.serviceName}}
+    </li>
+    <li *ngIf="appService.itemName!=null">
+      <a routerLink="{{appService.serviceUrl}}">{{appService.serviceName}}</a>
     </li>
   </ol>
 </nav>

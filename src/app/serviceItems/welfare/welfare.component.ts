@@ -17,7 +17,7 @@ export class WelfareComponent {
         private route: ActivatedRoute,
         private router: Router,
         public webmenuService: HeaderWebmenuService,
-        public appService:AppService) { }
+        public appService: AppService) { }
 
     ngOnInit() {
         this.sub = this.webmenuService.getWebMenus().subscribe(
@@ -26,7 +26,8 @@ export class WelfareComponent {
                 for (var i = 0; i < data.length; i++) {
                     if (locationUrl == data[i].uri) {
                         this.serviceName = data[i].title;
-                        this.appService.currentServiceName = this.serviceName;
+                        this.appService.serviceName = this.serviceName;
+                        this.appService.serviceUrl = locationUrl;
                     }
                 }
             },
