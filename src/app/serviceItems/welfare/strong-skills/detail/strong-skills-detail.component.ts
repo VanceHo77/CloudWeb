@@ -51,7 +51,7 @@ export class StrongSkillsDetailComponent implements OnInit {
         this.crumbsService.createThrLayer(this.content[0].name);
       },
       err => console.error(err),
-      () => console.log('done loading legal-advice detail')
+      () => console.log('done loading strong-skills-detail')
     );
   }
 

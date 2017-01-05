@@ -16,7 +16,7 @@ export class StrongSkillsService {
 
   getStrongSkills(params: URLSearchParams) {
 
-    //變更Url
+    // 變更Url
     this.historyService.pushState({ title: 'StrongSkillsService', url: location.pathname + '?' + params.toString() });
 
     return this.http.get(SourceUrl, new RequestOptions({ search: params })).map((res: Response) => res.json());

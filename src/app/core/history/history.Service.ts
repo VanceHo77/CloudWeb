@@ -7,6 +7,7 @@ export interface History {
 @Injectable()
 export class HistoryService {
     pushState(obj: History) {
-        history.pushState(obj, obj.title, obj.url);
+        history.replaceState(obj, obj.title, obj.url);
     }
+    
 }

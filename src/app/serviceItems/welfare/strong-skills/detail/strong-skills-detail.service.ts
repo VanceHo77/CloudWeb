@@ -15,10 +15,6 @@ export class StrongSkillsDetailService {
   constructor(private http: Http, private historyService: HistoryService) { }
 
   getStrongSkillsDetail(params: URLSearchParams) {
-
-    //變更Url
-    this.historyService.pushState({ title: 'StrongSkillsDetailService', url: location.pathname + '?' + params.toString() });
-
     return this.http.get(SourceUrl, new RequestOptions({ search: params })).map((res: Response) => res.json());
   }
 }

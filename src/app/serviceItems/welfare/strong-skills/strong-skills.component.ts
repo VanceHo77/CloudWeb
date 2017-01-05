@@ -48,6 +48,9 @@ export class StrongSkillsComponent implements OnInit {
       }
       this.getData(page.toString(), name);
     });
+    //主要供使用瀏覽器進行上下頁操作時判斷
+    let thr = document.getElementById("crumbsThrLayer");
+    if (thr != null) thr.remove();
   }
 
   ngOnDestroy() {
@@ -87,7 +90,7 @@ export class StrongSkillsComponent implements OnInit {
         this.content = data.content;
       },
       err => console.error(err),
-      () => console.log('done loading legal-advice')
+      () => console.log('done loading strong-skills')
     );
   }
 
