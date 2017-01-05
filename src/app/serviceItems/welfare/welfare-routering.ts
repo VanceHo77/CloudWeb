@@ -24,7 +24,7 @@ export const WelfareRoutes: Routes = [
         path: 'strongSkills', component: StrongSkillsComponent
       },
       {
-        path: 'strongSkills/detail', component: StrongSkillsDetailComponent
+        path: 'strongSkills-detail', component: StrongSkillsDetailComponent
       }
     ]
   }

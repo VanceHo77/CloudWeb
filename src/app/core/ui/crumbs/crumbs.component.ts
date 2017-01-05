@@ -1,6 +1,5 @@
-import { ActivatedRoute, Router } from '@angular/router';
 import { AppService } from './../../../app.service';
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-crumbs',
@@ -8,5 +7,12 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./crumbs.component.css']
 })
 export class CrumbsComponent {
+
   constructor(public appService: AppService) { }
+
+  removeThrLayer(event: Event) {
+    event.preventDefault();
+    let thr = document.getElementById("crumbsThrLayer");
+    if (thr != null) thr.remove();
+  }
 }

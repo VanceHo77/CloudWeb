@@ -14,7 +14,6 @@ export class WelfareComponent {
     sub;
 
     constructor(
-        private route: ActivatedRoute,
         private router: Router,
         public webmenuService: HeaderWebmenuService,
         public appService: AppService) { }
@@ -24,10 +23,10 @@ export class WelfareComponent {
             data => {
                 var locationUrl = window.location.pathname;
                 for (var i = 0; i < data.length; i++) {
-                    if (locationUrl == data[i].uri) {
+                    if (locationUrl.indexOf(data[i].uri) >= 0) {
                         this.serviceName = data[i].title;
                         this.appService.serviceName = this.serviceName;
-                        this.appService.serviceUrl = locationUrl;
+                        this.appService.serviceUrl = locationUrl.replace('-detail', '');
                     }
                 }
             },

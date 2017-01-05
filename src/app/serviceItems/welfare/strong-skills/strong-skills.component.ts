@@ -4,7 +4,7 @@ import { HistoryService } from './../../../core/history/history.Service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { StrongSkillsService } from './strong-skills.service';
-import { Component, OnInit, enableProdMode } from '@angular/core';
+import { Component, OnInit, enableProdMode, Output, EventEmitter } from '@angular/core';
 
 // 在Component中連續修改同一個值，會產生錯誤(Expression has changed after it was checked.)
 //需要加入enableProdMode();
@@ -54,9 +54,10 @@ export class StrongSkillsComponent implements OnInit {
     this.sub.unsubscribe();
   }
 
+  @Output() detailEvent = new EventEmitter();
+
   public showDetail(id: string, itemName: string) {
-    AppService.itemName = itemName;
-    this.router.navigateByUrl('/welfare/strongSkills/detail?id=' + id);
+    this.router.navigateByUrl('/welfare/strongSkills-detail?id=' + id);
   }
 
   public pageChanged(queryStr: string, event: any): void {
