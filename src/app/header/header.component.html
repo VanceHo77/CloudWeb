@@ -27,15 +27,23 @@
         <img src="<c:url value='/images/buttons/icon-google+.png'/>" alt="google+">
       </a>
     </div>-->
+ 
 
+    <div id="dialog" title="天氣快報">
+      <div class="row">
+        <span>發佈時間：</span>
+        <span id="release"></span>
+      </div>
+      <div class="row" id="weatherContent">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div>
+    </div>
 
-    <div class="weather">
-      <div class="icon" id="weatherWarningBtn">
-        <a href="#" style="text-decoration: none;">
-<img id="imgWeather" src="../resources/images/weather/sunny.png" alt="天氣快報" title="天氣快報">
-</a>
-</div>
-<!--<div class="weather-temp">
+<div class="weather" (click)="displayWeather($event)">
+  <div class="icon" id="weatherWarningBtn">
+
+    <img id="imgWeather" src="../resources/images/weather/sunny.png" alt="天氣快報" title="天氣快報">
+
+  </div>
+  <!--<div class="weather-temp">
         <a id="weather-temp" style="text-decoration: none; color: black;" href="<c:url value=" /weather "/>" title="溫度">
         </a>
       </div>
@@ -43,13 +51,6 @@
         <a id="weather-rain" style="text-decoration: none; color: black;" href="<c:url value=" /weather "/>" title="降雨機率">
         </a>
       </div>-->
-</div>
-<div id="dialog" title="天氣快報" style="display: none;">
-<div class="row">
-  <span>發佈時間：</span>
-  <span id="release"></span>
-</div>
-<div class="row" id="weatherContent"></div>
 </div>
 </div>
 </header>
@@ -74,5 +75,3 @@
     </nav>
   </div>
 </div>
-
-
