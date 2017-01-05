@@ -8,7 +8,6 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class HeaderWebmenuService {
 
-    public disabled: boolean = false;
     public status: { isopen: boolean } = { isopen: false };
     
     constructor(private http: Http) { }
