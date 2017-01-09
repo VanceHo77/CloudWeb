@@ -1,4 +1,3 @@
-import { AppService } from './../../../app.service';
 import { URLSearchParams } from '@angular/http';
 import { HistoryService } from './../../../core/history/history.Service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,7 +13,7 @@ enableProdMode();
   selector: 'app-strong-skills',
   templateUrl: './strong-skills.component.html',
   styleUrls: ['./strong-skills.component.css'],
-  providers: [AppService, HistoryService, StrongSkillsService]
+  providers: [ HistoryService, StrongSkillsService]
 })
 export class StrongSkillsComponent implements OnInit {
 
@@ -31,7 +30,6 @@ export class StrongSkillsComponent implements OnInit {
 
   constructor(
     private strongSkillsService: StrongSkillsService,
-    public appService: AppService,
     private route: ActivatedRoute,
     private router: Router) { }
 

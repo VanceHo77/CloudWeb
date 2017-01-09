@@ -1,10 +1,9 @@
-import { AppService } from './app.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  providers: [AppService]
+  providers: []
 })
 export class AppComponent implements OnInit {
   ngOnInit() {
