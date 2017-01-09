@@ -30,7 +30,7 @@ export interface PageChangedEvent {
 }
 
 const paginationConfig:PaginationConfig = {
-  maxSize: void 20,
+  maxSize: void 0,
   itemsPerPage: 20,
   boundaryLinks: false,
   directionLinks: true,
@@ -84,7 +84,7 @@ const PAGINATION_TEMPLATE = `
 export class PaginationComponent implements ControlValueAccessor, OnInit, PaginationConfig, KeyAttribute {
   public config:any;
   @Input() public align:boolean;
-  @Input() public maxSize:number;
+  public maxSize:number = 10;//欲顯示的分頁按鈕數量
 
   @Input() public boundaryLinks:boolean;
   @Input() public directionLinks:boolean;
