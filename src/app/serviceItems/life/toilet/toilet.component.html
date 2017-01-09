@@ -1,0 +1,36 @@
+<section>
+  <div class="content sidemenu form-search bg-grey" style="display: block;">
+    <div class="col-xs-12 col-sm-5 col-md-5">
+      <label class="col-xs-4 col-sm-5 col-md-4" for="qName" style="padding-top: 8px;">查詢地址：</label>
+      <div class="input-group">
+        <input id="search" placeholder="地址..." type="text" class="col-xs-7 col-md-7 form-control" #name (keyup.enter)="enterQuery($event)">
+        <span class="input-group-btn"><button class="btn btn-default" id="query" style="padding: 6.5px;" (click)="clickQuery(name.value)">查詢</button></span>
+      </div>
+    </div>
+</div>
+</section>
+
+<table class="table table-bordered table-hover table-responsive table-striped">
+  <thead>
+    <tr>
+      <th width="25%">鄉鎮名稱</th>
+      <th width="25%">村里名稱</th>
+      <th width="20%">公廁名稱</th>
+      <th width="30%">地址或地點描述</th>
+    </tr>
+  </thead>
+  <tbody id="tableList">
+    <tr  class="block" *ngFor="let data of content" (click)="showDetail(id.innerHTML,name.innerHTML)">
+      <td #id style="display: none;">{{data.id}}</td>
+      <td #name>{{data.district}}</td>
+      <td>{{data.village}}</td>
+      <td>{{data.name}}</td>
+      <td>{{data.address}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="row">
+  <pagination [boundaryLinks]="true" [totalItems]="totalItems" [(ngModel)]="currentPage" class="pagination-sm" previousText="&lsaquo;"
+    nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" (pageChanged)="pageChanged(name.value,$event)"></pagination>
+</div>

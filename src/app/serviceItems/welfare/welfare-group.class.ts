@@ -5,4 +5,4 @@ import { LegalAdviceComponent } from './legal-advice/legal-advice.component';
 
 const StrongSkills = [StrongSkillsComponent, StrongSkillsDetailComponent];
 
-export const WELFAREGROUP: Array<any> = [WelfareComponent, LegalAdviceComponent, StrongSkills];
+export const WELFARE_GROUP: Array<any> = [WelfareComponent, LegalAdviceComponent, StrongSkills];

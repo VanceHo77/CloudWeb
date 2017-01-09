@@ -1,4 +1,5 @@
-import { WELFAREGROUP } from './serviceItems/welfare/welfare-group.class';
+import { LIFE_GROUP } from './serviceItems/life/life-group.class';
+import { WELFARE_GROUP } from './serviceItems/welfare/welfare-group.class';
 import { HeaderWebmenuComponent } from './header/header-webmenu/header-webmenu.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -12,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { IndexComponent } from './index/index.component';
+import { ToiletComponent } from './serviceItems/life/toilet/toilet.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { IndexComponent } from './index/index.component';
     HeaderWebmenuComponent,
     FooterComponent,
     IndexComponent,
-    WELFAREGROUP,
+    WELFARE_GROUP,
+    LIFE_GROUP,
+    ToiletComponent,
   ],
   imports: [
     BrowserModule,

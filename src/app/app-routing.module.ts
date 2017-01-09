@@ -1,3 +1,4 @@
+import { LifeRoutes } from './serviceItems/life/life-routering';
 import { WelfareRoutes } from './serviceItems/welfare/welfare-routering';
 import { LegalAdviceComponent } from './serviceItems/welfare/legal-advice/legal-advice.component';
 import { IndexComponent } from './index/index.component';
@@ -12,7 +13,9 @@ const routes: Routes = [
   {
     path: 'index', component: IndexComponent
   },
-  ...WelfareRoutes,{
+  ...WelfareRoutes,
+  ...LifeRoutes,
+  {
     path: '**', redirectTo: '/index', pathMatch: 'full'
   }
 ];
