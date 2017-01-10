@@ -11,7 +11,7 @@ export class AppService {
   public serviceName: string;
   public serviceUrl: string;
   public itemName: string;
-  public static districts: Array<String> = [];
+  public static districts: Array<string> = [];
 
   constructor(private http: Http) {
     if (AppService.districts.length == 0) {

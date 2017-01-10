@@ -1,36 +1,52 @@
-<section>
-  <div class="content sidemenu form-search bg-grey" style="display: block;">
-    <div class="col-xs-12 col-sm-5 col-md-5">
-      <label class="col-xs-4 col-sm-5 col-md-4" for="qName" style="padding-top: 8px;">查詢地址：</label>
-      <div class="input-group">
-        <input id="search" placeholder="地址..." type="text" class="col-xs-7 col-md-7 form-control" #name (keyup.enter)="enterQuery($event)">
-        <span class="input-group-btn"><button class="btn btn-default" id="query" style="padding: 6.5px;" (click)="clickQuery(name.value)">查詢</button></span>
+<form #toiletForm="ngForm">
+  <section>
+    <div class="content sidemenu form-search bg-grey" style="display: block;">
+      <div class="col-xs-12 col-sm-5 col-md-5">
+        <label class="col-xs-4 col-sm-5 col-md-4" for="district" style="padding-top: 8px;">查詢行政區域：</label>
+        <div class="col-xs-3 col-sm-4 col-md-4">
+          <select #district="ngModel" id="district" name='district' class="form-control" (change)="changeDistrict(page.value,toiletForm.value)" [(ngModel)]="toilet.district">
+            <option value="">--鄉鎮區--</option>
+            <option *ngFor="let item of districts" [selected]="toilet.district===item ? 'selected' : ''">{{item}}</option>
+          </select>
+        </div>
+        <div class="col-xs-3 col-sm-4 col-md-4">
+          <select #village="ngModel" id="village" name='village' class="form-control" (change)="onSubmit(page.value,toiletForm.value)" [(ngModel)]="toilet.village">
+            <option value="">--村里--</option>
+            <option *ngFor="let item of villages" [selected]="toilet.village===item ? 'selected' : ''">{{item}}</option>
+          </select>
+        </div>
       </div>
-    </div>
-</div>
-</section>
+      <div class="col-xs-12 col-sm-5 col-md-5">
+        <label class="col-xs-4 col-sm-5 col-md-3" for="address" style="padding-top: 8px;">查詢地址：</label>
+        <div class="input-group">
+          <input #address="ngModel" id="address" name='address' placeholder="地址..." type="text" class="col-xs-7 col-md-7 form-control" (keyup.enter)="onSubmit(page.value,toiletForm.value)" [(ngModel)]="toilet.address">
+          <span class="input-group-btn"><button  class="btn btn-default" id="query" style="padding: 6.5px;">查詢</button></span>
+        </div>
+      </div>
+  </div>
+  </section>
 
-<table class="table table-bordered table-hover table-responsive table-striped">
-  <thead>
-    <tr>
-      <th width="15%">鄉鎮名稱</th>
-      <th width="15%">村里名稱</th>
-      <th width="30%">公廁名稱</th>
-      <th width="40%">地址或地點描述</th>
-    </tr>
-  </thead>
-  <tbody id="tableList">
-    <tr  class="block" *ngFor="let data of content" (click)="showDetail(id.innerHTML,name.innerHTML)">
-      <td #id style="display: none;">{{data.id}}</td>
-      <td #name>{{data.district}}</td>
-      <td>{{data.village}}</td>
-      <td>{{data.name}}</td>
-      <td>{{data.address}}</td>
-    </tr>
-  </tbody>
-</table>
-
+  <table class="table table-bordered table-hover table-responsive table-striped">
+    <thead>
+      <tr>
+        <th width="15%">鄉鎮名稱</th>
+        <th width="15%">村里名稱</th>
+        <th width="30%">公廁名稱</th>
+        <th width="40%">地址或地點描述</th>
+      </tr>
+    </thead>
+    <tbody id="tableList">
+      <tr  class="block" *ngFor="let data of content" (click)="showDetail(id.innerHTML,name.innerHTML)">
+        <td #id style="display: none;">{{data.id}}</td>
+        <td #name>{{data.district}}</td>
+        <td>{{data.village}}</td>
+        <td>{{data.name}}</td>
+        <td>{{data.address}}</td>
+      </tr>
+    </tbody>
+  </table>
+</form>
 <div class="row">
-  <pagination [boundaryLinks]="true" [totalItems]="totalItems" [(ngModel)]="currentPage" class="pagination-sm" previousText="&lsaquo;"
-    nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" (pageChanged)="pageChanged(name.value,$event)"></pagination>
+  <pagination #page [boundaryLinks]="true" [totalItems]="totalItems" [(ngModel)]="currentPage" class="pagination-sm" previousText="&lsaquo;"
+   nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" (pageChanged)="pageChanged($event,toiletForm.value)"></pagination>
 </div>

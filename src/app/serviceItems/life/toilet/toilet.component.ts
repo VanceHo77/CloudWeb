@@ -1,3 +1,5 @@
+import { Toilet } from './toilet.class';
+import { AppService } from './../../../app.service';
 import { ToiletService } from './toilet.service';
 import { URLSearchParams } from '@angular/http';
 import { HistoryService } from './../../../core/history/history.Service';
@@ -13,20 +15,26 @@ enableProdMode();
   selector: 'app-toilet',
   templateUrl: './toilet.component.html',
   styleUrls: ['./toilet.component.css'],
-  providers: [ HistoryService, ToiletService]
+  providers: [HistoryService, ToiletService]
 })
 export class ToiletComponent implements OnInit {
+
+  public toilet = new Toilet('', '', '');
 
   private serviceName: string;
   private content;
   private number;
   private totalElements;
-  private totalPages;
+
   private sub;
+  public districts: Array<string>;
+  public villages: Array<string>;
 
   //Pagination
   public totalItems: number;
   public currentPage: number = 1;
+
+  @Output() detailEvent = new EventEmitter();
 
   constructor(
     private toiletService: ToiletService,
@@ -36,52 +44,62 @@ export class ToiletComponent implements OnInit {
 
   ngOnInit() {
     this.sub = this.route.queryParams.subscribe(params => {
-      var page = this.currentPage;
-      var name = "";
-      if (params['page'] != null) {
-        page = params['page'];
+      let page = this.currentPage;
+
+      if (params['page'] != null) page = params['page'];
+      if (params['district'] != null) {
+        this.toilet.district = params['district'].trim();
+        this.getVillages(this.toilet.district);
       }
-      if (params['name'] != null) {
-        name = params['name'].trim();
-      }
-      this.getData(page.toString(), name);
+      if (params['village'] != null) this.toilet.village = params['village'].trim();
+      if (params['address'] != null) this.toilet.address = params['address'].trim();
+      this.getData(page.toString(), this.toilet);
     });
     //主要供使用瀏覽器進行上下頁操作時判斷
     let thr = document.getElementById("crumbsThrLayer");
     if (thr != null) thr.remove();
   }
 
+  //每次做完组件视图和子视图的变更检测之后调用
+  ngAfterViewChecked() {
+    this.districts = AppService.districts;
+  }
+
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
-
-  @Output() detailEvent = new EventEmitter();
 
   public showDetail(id: string, itemName: string) {
     this.router.navigateByUrl('/life/toilet?id=' + id);
   }
 
-  public pageChanged(queryStr: string, event: any): void {
-    this.getData(event.page, queryStr);
+  public pageChanged(event: any, toilet: Toilet): void {
+    this.onSubmit(event.page, toilet);
   };
 
-  public clickQuery(queryStr: string) {
-    this.getData(this.currentPage.toString(), queryStr.trim());
+  public changeDistrict(page, toilet: Toilet) {
+    this.getVillages(toilet.district);
+    this.onSubmit(page, toilet);
   }
 
-  public enterQuery(event: Event) {
-    this.getData(this.currentPage.toString(), (<HTMLInputElement>event.target).value.trim());
+  public onSubmit(page: string, qParams: Toilet) {
+    this.getData(page, qParams);
   }
 
-  getData(page: string, queryStr: string) {
+  getData(page: string, qParams: Toilet) {
     let params: URLSearchParams = new URLSearchParams();
     params.set('page', page);
-    if (queryStr != '') {
-      params.set('name', queryStr);
+    if (qParams.district != '') {
+      params.set('district', qParams.district);
+    }
+    if (qParams.address != '') {
+      params.set('address', qParams.address);
+    }
+    if (qParams.village != '') {
+      params.set('village', qParams.village);
     }
 
-
-    this.sub = this.toiletService.getStrongSkills(params).subscribe(
+    this.sub = this.toiletService.getToilet(params).subscribe(
       data => {
         this.totalItems = data.totalElements;
         this.currentPage = parseInt(data.number) + 1;
@@ -89,6 +107,22 @@ export class ToiletComponent implements OnInit {
       },
       err => console.error(err),
       () => console.log('done loading toilet')
+    );
+  }
+
+  getVillages(district: string) {
+    let params: URLSearchParams = new URLSearchParams();
+    if (district != '') {
+      params.set('district', district);
+    }
+
+    this.sub = this.toiletService.getVillages(params).subscribe(
+      data => {
+        this.villages = data;
+
+      },
+      err => console.error(err),
+      () => console.log('done loading toilet-villages')
     );
   }
 

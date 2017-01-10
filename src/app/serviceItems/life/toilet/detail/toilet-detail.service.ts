@@ -9,11 +9,11 @@ import { Observable } from 'rxjs/Rx';
 const SourceUrl: string = environment.sourceUrl + '/welfare/strongSkills?';
 
 @Injectable()
-export class StrongSkillsDetailService {
+export class ToiletDetailService {
 
   constructor(private http: Http) { }
 
-  getStrongSkillsDetail(params: URLSearchParams) {
+  getToiletDetail(params: URLSearchParams) {
     return this.http.get(SourceUrl, new RequestOptions({ search: params })).map((res: Response) => res.json());
   }
 }

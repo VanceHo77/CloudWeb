@@ -1,3 +1,4 @@
+import { ToiletDetailComponent } from './toilet/detail/toilet-detail.component';
 import { LifeComponent } from './life.component';
 import { ToiletComponent } from './toilet/toilet.component';
 
@@ -12,6 +13,9 @@ export const LifeRoutes: Routes = [
       { path: '' },
       {
         path: 'toilet', component: ToiletComponent
+      },
+      {
+        path: 'toilet-detail', component: ToiletDetailComponent
       }
     ]
   }
