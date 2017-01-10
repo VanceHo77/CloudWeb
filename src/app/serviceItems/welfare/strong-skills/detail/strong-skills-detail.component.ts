@@ -39,7 +39,6 @@ export class StrongSkillsDetailComponent implements OnInit {
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
-  @Output() detailEvent = new EventEmitter();
 
   getData(id: string) {
     let params: URLSearchParams = new URLSearchParams();

@@ -38,9 +38,9 @@
     <tbody id="tableList">
       <tr  class="block" *ngFor="let data of content" (click)="showDetail(id.innerHTML,name.innerHTML)">
         <td #id style="display: none;">{{data.id}}</td>
-        <td #name>{{data.district}}</td>
+        <td>{{data.district}}</td>
         <td>{{data.village}}</td>
-        <td>{{data.name}}</td>
+        <td #name>{{data.name}}</td>
         <td>{{data.address}}</td>
       </tr>
     </tbody>

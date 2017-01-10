@@ -70,7 +70,7 @@ export class ToiletComponent implements OnInit {
   }
 
   public showDetail(id: string, itemName: string) {
-    this.router.navigateByUrl('/life/toilet?id=' + id);
+    this.router.navigateByUrl('/life/toilet-detail?id=' + id);
   }
 
   public pageChanged(event: any, toilet: Toilet): void {

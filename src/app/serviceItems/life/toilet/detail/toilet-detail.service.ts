@@ -6,7 +6,7 @@ import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
-const SourceUrl: string = environment.sourceUrl + '/welfare/strongSkills?';
+const SourceUrl: string = environment.sourceUrl + '/life/toilet?';
 
 @Injectable()
 export class ToiletDetailService {
