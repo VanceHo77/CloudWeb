@@ -60,7 +60,7 @@ export class ToiletComponent implements OnInit {
     if (thr != null) thr.remove();
   }
 
-  //每次做完组件视图和子视图的变更检测之后调用
+  //每次做完组件view和子viw的變更檢測之後調用
   ngAfterViewChecked() {
     this.districts = AppService.districts;
   }
@@ -77,9 +77,14 @@ export class ToiletComponent implements OnInit {
     this.onSubmit(event.page, toilet);
   };
 
-  public changeDistrict(page, toilet: Toilet) {
-    this.getVillages(toilet.district);
-    this.onSubmit(page, toilet);
+  public changeDistrict(page, t: Toilet) {
+    if (t.district == '') {
+      this.villages = [];
+      this.toilet.village = '';
+    } else {
+      this.getVillages(t.district);
+    }
+    this.onSubmit(page, this.toilet);
   }
 
   public onSubmit(page: string, qParams: Toilet) {
