@@ -12,7 +12,6 @@ import { Component, OnInit, enableProdMode, Output, EventEmitter } from '@angula
 })
 export class ToiletDetailComponent implements OnInit {
 
-  private serviceName: string;
   private content;
   private sub;
 

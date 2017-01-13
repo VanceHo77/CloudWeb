@@ -17,7 +17,6 @@ enableProdMode();
 })
 export class StrongSkillsDetailComponent implements OnInit {
 
-  private serviceName: string;
   private content;
   private sub;
 

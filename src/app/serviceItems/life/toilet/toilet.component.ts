@@ -21,7 +21,6 @@ export class ToiletComponent implements OnInit {
 
   public toilet = new Toilet('', '', '');
 
-  private serviceName: string;
   private content;
   private number;
   private totalElements;

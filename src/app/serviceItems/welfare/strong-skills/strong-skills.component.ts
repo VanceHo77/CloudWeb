@@ -57,7 +57,7 @@ export class StrongSkillsComponent implements OnInit {
 
   @Output() detailEvent = new EventEmitter();
 
-  public showDetail(id: string, itemName: string) {
+  public showDetail(id: string) {
     this.router.navigateByUrl('/welfare/strongSkills-detail?id=' + id);
   }
 
