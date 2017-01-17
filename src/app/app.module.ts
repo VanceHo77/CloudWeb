@@ -18,11 +18,13 @@ import { IndexComponent } from './index/index.component';
 @NgModule({
   declarations: [
     AppComponent,
-    COREGROUPCOMPONENT,
     HeaderComponent,
     HeaderWebmenuComponent,
     FooterComponent,
     IndexComponent,
+    // Core
+    COREGROUPCOMPONENT,
+    // ServiceItems
     WELFARE_GROUP,
     LIFE_GROUP
   ],

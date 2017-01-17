@@ -5,11 +5,11 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: '',
-    templateUrl: './life.component.html',
+    templateUrl: './second-layer.component.html',
     styleUrls: [],
     providers: [HeaderWebmenuService, AppService]
 })
-export class LifeComponent {
+export class SecondLayerComponent {
     serviceName: string;
     sub;
 

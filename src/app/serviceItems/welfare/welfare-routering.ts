@@ -1,3 +1,4 @@
+import { SecondLayerComponent } from './../../core/template/second-layer.component';
 import { StrongSkillsDetailComponent } from './strong-skills/detail/strong-skills-detail.component';
 import { StrongSkillsComponent } from './strong-skills/strong-skills.component';
 import { NgModule } from '@angular/core';
@@ -9,7 +10,7 @@ import { LegalAdviceComponent } from './legal-advice/legal-advice.component';
 
 export const WelfareRoutes: Routes = [
   {
-    path: 'official', component: WelfareComponent,
+    path: 'official', component: SecondLayerComponent,
     children: [
       { path: '' },
       {
@@ -17,7 +18,7 @@ export const WelfareRoutes: Routes = [
       }
     ]
   }, {
-    path: 'welfare', component: WelfareComponent,
+    path: 'welfare', component: SecondLayerComponent,
     children: [
       { path: '' },
       {
