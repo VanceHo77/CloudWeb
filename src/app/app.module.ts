@@ -1,3 +1,4 @@
+import { LEISURE_GROUP } from './serviceItems/leisure/leisure-group.class';
 import { LIFE_GROUP } from './serviceItems/life/life-group.class';
 import { WELFARE_GROUP } from './serviceItems/welfare/welfare-group.class';
 import { HeaderWebmenuComponent } from './header/header-webmenu/header-webmenu.component';
@@ -18,6 +19,7 @@ import { IndexComponent } from './index/index.component';
 @NgModule({
   declarations: [
     AppComponent,
+    // index
     HeaderComponent,
     HeaderWebmenuComponent,
     FooterComponent,
@@ -26,7 +28,8 @@ import { IndexComponent } from './index/index.component';
     COREGROUPCOMPONENT,
     // ServiceItems
     WELFARE_GROUP,
-    LIFE_GROUP
+    LIFE_GROUP,
+    LEISURE_GROUP
   ],
   imports: [
     BrowserModule,

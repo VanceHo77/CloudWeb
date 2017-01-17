@@ -1,3 +1,4 @@
+import { LeisureRoutes } from './serviceItems/leisure/leisure-routering';
 import { LifeRoutes } from './serviceItems/life/life-routering';
 import { WelfareRoutes } from './serviceItems/welfare/welfare-routering';
 import { LegalAdviceComponent } from './serviceItems/welfare/legal-advice/legal-advice.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   },
   ...WelfareRoutes,
   ...LifeRoutes,
+  ...LeisureRoutes,
   {
     path: '**', redirectTo: '/index', pathMatch: 'full'
   }
