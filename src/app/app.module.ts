@@ -13,7 +13,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { IndexComponent } from './index/index.component';
-import { ToiletComponent } from './serviceItems/life/toilet/toilet.component';
 
 
 @NgModule({
@@ -25,8 +24,7 @@ import { ToiletComponent } from './serviceItems/life/toilet/toilet.component';
     FooterComponent,
     IndexComponent,
     WELFARE_GROUP,
-    LIFE_GROUP,
-    ToiletComponent,
+    LIFE_GROUP
   ],
   imports: [
     BrowserModule,
