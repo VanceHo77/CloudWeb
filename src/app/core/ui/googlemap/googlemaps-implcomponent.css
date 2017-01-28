@@ -1,4 +1,16 @@
 .sebm-google-map-container {
-  height: 300px;
+  height: 500px;
 }
 
+.table-markerinfo{
+  font-size:12px;
+}
+
+.table-markerinfo tbody tr td:first-child{
+  width: 12%;
+}
+
+.table-markerinfo tbody tr td{
+  width: 88%;
+  padding: 3px;
+}

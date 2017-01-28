@@ -1,20 +1,68 @@
-<h1>{{ title }}</h1>
+<sebm-google-map [latitude]="defLat" [longitude]="defLng">
+  <sebm-google-map-marker *ngFor="let m of markers" [longitude]="m.px" [latitude]="m.py" [label]="" [title]="m.title">
 
-<!-- this creates a google map on the page with the given lat/lng from -->
-<!-- the component as the initial center of the map: -->
-<button (click)="selectMyHome()">selectMyHome</button>
-<sebm-google-map [latitude]="lat" [longitude]="lng">
-  <sebm-google-map-marker 
-          *ngFor="let m of markers; let i = index"
-          
-          [latitude]="m.lat"
-          [longitude]="m.lng"
-          [label]="">
-          
-        <sebm-google-map-info-window>
-          <strong>{{m.label}}</strong>
-        </sebm-google-map-info-window>
-        
-      </sebm-google-map-marker>
+    <sebm-google-map-info-window>
+      <table class="table table-bordered table-hover table-responsive table-striped table-markerinfo">
+        <tbody>
+          <tr>
+            <td><strong>名稱</strong></td>
+            <td>{{m.name}}</td>
+          </tr>
+          <tr>
+            <td><strong>簡介</strong></td>
+            <td>{{m.tolDescribe}}</td>
+          </tr>
+          <tr>
+            <td><strong>郵遞區號</strong></td>
+            <td>{{m.zipCode}}</td>
+          </tr>
+          <tr>
+            <td><strong>地址</strong></td>
+            <td>{{m.address}}</td>
+          </tr>
+          <tr>
+            <td><strong>管理單位</strong></td>
+            <td [innerHTML]="m.tyWebsite"></td>
+          </tr>
+          <tr>
+            <td><strong>網站</strong></td>
+            <td [innerHTML]="m.website"></td>
+          </tr>
+          <tr>
+            <td><strong>費用</strong></td>
+            <td>{{m.charge}}</td>
+          </tr>
+          <tr>
+            <td><strong>營業時間</strong></td>
+            <td>{{m.openTime}}</td>
+          </tr>
+          <tr>
+            <td><strong>電話</strong></td>
+            <td>{{m.tel}}</td>
+          </tr>
+          <tr>
+            <td><strong>傳真</strong></td>
+            <td>{{m.fax}}</td>
+          </tr>
+          <tr>
+            <td><strong>停車資訊</strong></td>
+            <td>{{m.parkingInfo}}</td>
+          </tr>
+          <tr>
+            <td><strong>交通資訊</strong></td>
+            <td>{{m.travellingInfo}}</td>
+          </tr>
+          <tr>
+            <td><strong>備註</strong></td>
+            <td>{{m.remarks}}</td>
+          </tr>
+          <tr>
+            <td><strong>更新時間</strong></td>
+            <td>{{m.changeTime}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </sebm-google-map-info-window>
+
+  </sebm-google-map-marker>
 </sebm-google-map>
-

@@ -2,7 +2,7 @@ import { marker } from './marker.class';
 import { GoogleMapsAPIWrapper } from './core/services/google-maps-api-wrapper';
 import { MarkerManager } from './core/services/managers/marker-manager';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'googlemaps-root',
@@ -11,30 +11,65 @@ import { Component, OnInit } from '@angular/core';
   providers: [MarkerManager, GoogleMapsAPIWrapper]
 })
 export class GoogleMapsImplComponent {
-  public title: string = 'My first angular 2 google maps example';
-  public lat: number = 24.979690;
-  public lng: number = 121.253992;
-  public markers: marker[] = [
-    {
-      lat: 24.970823,
-      lng: 121.191004,
-      label: '央大',
-      draggable: true
-    }, {
-      lat: 24.979690,
-      lng: 121.253992,
-      label: '預設值',
-      draggable: true
-    }
-  ];
+  // 預設位置
+  public defLat: number = 24.979690;
+  public defLng: number = 121.253992;
+  // 放大倍數
+  public zoom: number = 12;
+  // 資料來源
+  @Input() public jsonDataSource: Array<marker>;
+  // 用於顯示gmap上的點位資料
+  public markers: marker[];
 
-  selectMyHome(){
-    this.markers = [ {
-      lat: 24.176304,
-      lng: 120.535251,
-      label: '預設值',
-      draggable: true
-    }]
+  ngOnChanges() {
+    if (this.jsonDataSource != null) {
+      let tmp: marker[] = [];
+      let px: string;
+      let py: string;
+      let tyWebsite: string;
+      let website: string;
+
+      let count: number = 0;
+      for (let marker of this.jsonDataSource) {
+        if (count == 3) {
+          break;
+        }
+        px = marker.px.toString();
+        py = marker.py.toString();
+        tyWebsite = marker.tyWebsite.trim();
+        website = marker.website.trim();
+
+        if (tyWebsite != '') {
+          if (tyWebsite.indexOf('http:')) tyWebsite = 'http://' + tyWebsite;
+          tyWebsite = '<a href="' + tyWebsite + '" target="_blank">' + tyWebsite + '</a>';
+        }
+        if (website != '') website = '<a href="' + website + '" target="_blank">' + website + '</a>';
+
+        tmp.push(<marker>{
+          px: parseFloat(px),
+          py: parseFloat(py),
+          name: marker.name,
+          title: marker.name,
+          tolDescribe: marker.tolDescribe,
+          tyWebsite: tyWebsite,
+          address: marker.address,
+          zipCode: marker.zipCode,
+          travellingInfo: marker.travellingInfo,
+          openTime: marker.openTime,
+          website: website,
+          parkingInfo: marker.parkingInfo,
+          remarks: marker.remarks,
+          tel: marker.tel,
+          fax: marker.fax,
+          changeTime: marker.changeTime,
+          charge: marker.charge,
+          draggable: false
+        });
+        count++;
+      }
+      this.markers = tmp;
+    }
   }
+
 }
 

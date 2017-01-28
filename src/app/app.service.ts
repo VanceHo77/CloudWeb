@@ -23,7 +23,6 @@ export class AppService {
     this.sub = this.http.get(environment.sourceUrl + '/common/getDistricts').map((res: Response) => res.json()).subscribe(
       data => {
         AppService.districts = data;
-        console.log(AppService.districts);
       },
       err => console.error(err),
       () => console.log('done loading districts')
