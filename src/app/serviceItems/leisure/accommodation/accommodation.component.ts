@@ -1,7 +1,7 @@
 import { AppService } from './../../../app.service';
 import { HistoryService } from './../../../core/history/history.Service';
 import { AccommodationService } from './accommodation.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-accommodation',
@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class AccommodationComponent implements OnInit {
   sub;
 
-  public jsonData: any;
+  @Output() public jsonData: any;
 
   constructor(private accommodationService: AccommodationService) { }
 

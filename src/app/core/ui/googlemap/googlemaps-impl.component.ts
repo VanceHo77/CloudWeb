@@ -29,11 +29,7 @@ export class GoogleMapsImplComponent {
       let tyWebsite: string;
       let website: string;
 
-      let count: number = 0;
       for (let marker of this.jsonDataSource) {
-        if (count == 3) {
-          break;
-        }
         px = marker.px.toString();
         py = marker.py.toString();
         tyWebsite = marker.tyWebsite.trim();
@@ -65,7 +61,6 @@ export class GoogleMapsImplComponent {
           charge: marker.charge,
           draggable: false
         });
-        count++;
       }
       this.markers = tmp;
     }

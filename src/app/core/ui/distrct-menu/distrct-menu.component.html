@@ -2,16 +2,16 @@
   <div class="checkBoxMenu">
     <div class="row1">
       <template ngFor let-district [ngForOf]="districts" let-i="index">
-          <input type='checkbox' id='chk{{i}}' name='dist' value='district' [checked]='status'/>
-          <label for='chk{{i}}'>{{district}}</label>
+        <input type='checkbox' id='chk{{i}}' name='dist' value='{{district}}' [checked]='status' (change)='select()' />
+        <label for='chk{{i}}'>{{district}}</label>
       </template>
-     </div>
-      <div class="row2">
-        <div class="btnMenu">
-          <button (click)='selectAll()' type="button" class="btn btn-info" id="checkAllBtn">全選</button>
-          <button (click)='clear()' type="button" class="btn btn-danger" id="clearCheckedBtn">重設</button>
-        </div>
+    </div>
+    <div class="row2">
+      <div class="btnMenu">
+        <button (click)='selectAll()' type="button" class="btn btn-info" id="checkAllBtn">全選</button>
+        <button (click)='clear()' type="button" class="btn btn-danger" id="clearCheckedBtn">重設</button>
       </div>
     </div>
+  </div>
   <hr />
 </div>
