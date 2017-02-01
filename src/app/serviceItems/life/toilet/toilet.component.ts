@@ -33,8 +33,6 @@ export class ToiletComponent implements OnInit {
   public totalItems: number;
   public currentPage: number = 1;
 
-  @Output() detailEvent = new EventEmitter();
-
   constructor(
     private toiletService: ToiletService,
     private route: ActivatedRoute,

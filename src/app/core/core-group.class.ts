@@ -1,3 +1,4 @@
+import { DistrctMenuComponent } from './ui/distrct-menu/distrct-menu.component';
 import { GoogleMapsImplComponent } from './ui/googlemap/googlemaps-impl.component';
 import { SecondLayerComponent } from './template/second-layer.component';
 import { AgmCoreModule } from './ui/googlemap/core/core-module';
@@ -7,7 +8,8 @@ import { CrumbsComponent } from './ui/crumbs/crumbs.component';
 import { DropdownModule } from './ui/dropdown/dropdown.module';
 
 /* Component */
-export const COREGROUPCOMPONENT: Array<Component> = [CrumbsComponent, SecondLayerComponent, GoogleMapsImplComponent];
+export const COREGROUPCOMPONENT: Array<Component> =
+    [CrumbsComponent, SecondLayerComponent, GoogleMapsImplComponent, DistrctMenuComponent];
 
 /* Module */
 export const COREGROUPMODULES: Array<NgModule> = [
