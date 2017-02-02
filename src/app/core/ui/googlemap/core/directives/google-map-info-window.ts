@@ -1,8 +1,8 @@
-import {Component, ElementRef, EventEmitter, OnChanges, OnDestroy, OnInit, SimpleChange} from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnChanges, OnDestroy, OnInit, SimpleChange } from '@angular/core';
 
-import {InfoWindowManager} from '../services/managers/info-window-manager';
+import { InfoWindowManager } from '../services/managers/info-window-manager';
 
-import {SebmGoogleMapMarker} from './google-map-marker';
+import { SebmGoogleMapMarker } from './google-map-marker';
 
 let infoWindowId = 0;
 
@@ -102,7 +102,7 @@ export class SebmGoogleMapInfoWindow implements OnDestroy, OnChanges, OnInit {
   private _infoWindowAddedToManager: boolean = false;
   private _id: string = (infoWindowId++).toString();
 
-  constructor(private _infoWindowManager: InfoWindowManager, private _el: ElementRef) {}
+  constructor(private _infoWindowManager: InfoWindowManager, private _el: ElementRef) { }
 
   ngOnInit() {
     this.content = this._el.nativeElement.querySelector('.sebm-google-map-info-window-content');
@@ -112,12 +112,12 @@ export class SebmGoogleMapInfoWindow implements OnDestroy, OnChanges, OnInit {
   }
 
   /** @internal */
-  ngOnChanges(changes: {[key: string]: SimpleChange}) {
+  ngOnChanges(changes: { [key: string]: SimpleChange }) {
     if (!this._infoWindowAddedToManager) {
       return;
     }
     if ((changes['latitude'] || changes['longitude']) && typeof this.latitude === 'number' &&
-        typeof this.longitude === 'number') {
+      typeof this.longitude === 'number') {
       this._infoWindowManager.setPosition(this);
     }
     if (changes['zIndex']) {
@@ -133,10 +133,10 @@ export class SebmGoogleMapInfoWindow implements OnDestroy, OnChanges, OnInit {
     this.isOpen ? this._infoWindowManager.open(this) : this._infoWindowManager.close(this);
   }
 
-  private _setInfoWindowOptions(changes: {[key: string]: SimpleChange}) {
-    let options: {[propName: string]: any} = {};
+  private _setInfoWindowOptions(changes: { [key: string]: SimpleChange }) {
+    let options: { [propName: string]: any } = {};
     let optionKeys = Object.keys(changes).filter(
-        k => SebmGoogleMapInfoWindow._infoWindowOptionsInputs.indexOf(k) !== -1);
+      k => SebmGoogleMapInfoWindow._infoWindowOptionsInputs.indexOf(k) !== -1);
     optionKeys.forEach((k) => { options[k] = changes[k].currentValue; });
     this._infoWindowManager.setOptions(this, options);
   }
@@ -144,12 +144,16 @@ export class SebmGoogleMapInfoWindow implements OnDestroy, OnChanges, OnInit {
   /**
    * Opens the info window.
    */
-  open(): Promise<void> { return this._infoWindowManager.open(this); }
+  open(): Promise<void> {
+    this.isOpen = true; 
+    return this._infoWindowManager.open(this); 
+  }
 
   /**
    * Closes the info window.
    */
   close(): Promise<void> {
+    this.isOpen = false;
     return this._infoWindowManager.close(this).then(() => { this.infoWindowClose.emit(void 0); });
   }
 

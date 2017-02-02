@@ -21,6 +21,12 @@ export class GoogleMapsImplComponent {
   // 用於顯示gmap上的點位資料
   public markers: marker[];
 
+  private baseUrl = 'app/core/ui/googlemap/icon/';
+  public gourmet_iconurl: string = this.baseUrl + 'blue-dot.png';
+  public accommodation_iconurl: string = this.baseUrl + 'green-dot.png';
+  public attractions: string = this.baseUrl + 'purple-dot.png';
+
+
   ngOnChanges() {
     if (this.jsonDataSource != null) {
       let tmp: marker[] = [];
