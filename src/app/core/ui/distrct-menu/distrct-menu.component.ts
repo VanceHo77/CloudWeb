@@ -9,7 +9,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class DistrctMenuComponent {
 
   public districts: string[];
-  public status: boolean = false;
   public selects: string[];
   @Output() selectsEvt: EventEmitter<string[]> = new EventEmitter<string[]>();
 
@@ -27,17 +26,28 @@ export class DistrctMenuComponent {
         sltDistricts.push(districts[i].getAttribute('value'))
       }
     }
-    console.log(sltDistricts);
     this.selectsEvt.emit(sltDistricts);
   }
 
   selectAll() {
-    this.status = true;
+    this.changeChecked(true);
     this.selectsEvt.emit(this.districts);
   }
 
   clear() {
-    this.status = false;
+    this.changeChecked(false);
     this.selectsEvt.emit([]);
+  }
+
+  changeChecked(status: boolean) {
+    let districts = document.getElementsByName('dist');
+    for (var i = 0; i < districts.length; i++) {
+      let d = <HTMLInputElement>districts[i];
+      if (status) {
+        d.checked = status;
+      } else {
+        d.checked = status;
+      }
+    }
   }
 }

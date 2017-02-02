@@ -2,7 +2,7 @@
   <div class="checkBoxMenu">
     <div class="row1">
       <template ngFor let-district [ngForOf]="districts" let-i="index">
-        <input type='checkbox' id='chk{{i}}' name='dist' value='{{district}}' [checked]='status' (change)='select()' />
+        <input type='checkbox' id='chk{{i}}' name='dist' value='{{district}}' (change)='select()' />
         <label for='chk{{i}}'>{{district}}</label>
       </template>
     </div>
