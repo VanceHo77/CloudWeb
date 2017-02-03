@@ -1,2 +1,3 @@
 <app-distrct-menu (selectsEvt)="districtChange($event)"></app-distrct-menu>
+<app-near-menu [nearDisabled]='neardisabled' [accommodationDisabled]='accdisabled' [attractionsDisabled]='attrdisabled'  [gourmetDisabled]='gourmetdisabled'></app-near-menu>
 <googlemaps-root [jsonDataSource]="jsonData"></googlemaps-root>

@@ -7,10 +7,12 @@ import { PaginationModule } from './ui/pagination/pagination.module';
 import { NgModule, Component } from '@angular/core';
 import { CrumbsComponent } from './ui/crumbs/crumbs.component';
 import { DropdownModule } from './ui/dropdown/dropdown.module';
+import { NearMenuComponent } from './ui/near-menu/near-menu.component';
 
 /* Component */
 export const COREGROUPCOMPONENT: Array<Component> =
-    [CrumbsComponent, SecondLayerComponent, GoogleMapsImplComponent, DistrctMenuComponent, GooglemapComponent];
+    [CrumbsComponent, SecondLayerComponent, GoogleMapsImplComponent,
+        DistrctMenuComponent, GooglemapComponent, NearMenuComponent];
 
 /* Module */
 export const COREGROUPMODULES: Array<NgModule> = [

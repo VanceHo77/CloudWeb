@@ -8,14 +8,14 @@ import { Component, OnInit, Output, OnDestroy } from '@angular/core';
   templateUrl: './accommodation.component.html',
   providers: [HistoryService, AppService, AccommodationService]
 })
-export class AccommodationComponent implements OnInit, OnDestroy {
+export class AccommodationComponent implements  OnDestroy {
   sub;
 
   @Output() public jsonData: any;
 
   constructor(private accommodationService: AccommodationService) { }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.getAccommodation();
   }
 

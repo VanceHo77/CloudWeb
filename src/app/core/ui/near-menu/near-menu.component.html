@@ -1,0 +1,8 @@
+<div class="checkBoxMenu" [hidden]='neardisabled'>
+  <input name="near" type="checkbox" id="near0" value="accommodation" *ngIf="!accdisabled">
+  <label for="near0" *ngIf="!accdisabled">附近住宿</label>
+  <input name="near" type="checkbox" id="near1" value="attractions" *ngIf='!attrdisabled'>
+  <label for="near1" *ngIf='!attrdisabled'>附近景點</label>
+  <input name="near" type="checkbox" id="near2" value="gourmet" *ngIf='!gourmetdisabled'>
+  <label for="near2" *ngIf='!gourmetdisabled'>附近觀光消費</label>
+</div>
