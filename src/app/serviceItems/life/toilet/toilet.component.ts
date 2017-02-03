@@ -5,7 +5,7 @@ import { URLSearchParams } from '@angular/http';
 import { HistoryService } from './../../../core/history/history.Service';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Component, OnInit, enableProdMode, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, enableProdMode, Output, EventEmitter, OnDestroy } from '@angular/core';
 
 // 在Component中連續修改同一個值，會產生錯誤(Expression has changed after it was checked.)
 //需要加入enableProdMode();
@@ -17,7 +17,7 @@ enableProdMode();
   styleUrls: ['./toilet.component.css'],
   providers: [HistoryService, ToiletService]
 })
-export class ToiletComponent implements OnInit {
+export class ToiletComponent implements OnInit, OnDestroy {
 
   public toilet = new Toilet('', '', '');
 

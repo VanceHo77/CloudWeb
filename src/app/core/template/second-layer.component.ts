@@ -1,7 +1,7 @@
 import { AppService } from './../../app.service';
 import { HeaderWebmenuService } from './../../header/header-webmenu/header-webmenu.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
     selector: '',
@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: [],
     providers: [HeaderWebmenuService, AppService]
 })
-export class SecondLayerComponent {
+export class SecondLayerComponent implements OnInit, OnDestroy {
     serviceName: string;
     sub;
 

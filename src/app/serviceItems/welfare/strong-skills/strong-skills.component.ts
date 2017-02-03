@@ -3,7 +3,7 @@ import { HistoryService } from './../../../core/history/history.Service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { StrongSkillsService } from './strong-skills.service';
-import { Component, OnInit, enableProdMode, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, enableProdMode, Output, EventEmitter, OnDestroy } from '@angular/core';
 
 // 在Component中連續修改同一個值，會產生錯誤(Expression has changed after it was checked.)
 //需要加入enableProdMode();
@@ -13,9 +13,9 @@ enableProdMode();
   selector: 'app-strong-skills',
   templateUrl: './strong-skills.component.html',
   styleUrls: ['./strong-skills.component.css'],
-  providers: [ HistoryService, StrongSkillsService]
+  providers: [HistoryService, StrongSkillsService]
 })
-export class StrongSkillsComponent implements OnInit {
+export class StrongSkillsComponent implements OnInit, OnDestroy {
 
   private serviceName: string;
   private content;

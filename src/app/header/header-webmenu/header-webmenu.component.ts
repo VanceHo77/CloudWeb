@@ -1,5 +1,5 @@
 import { HeaderWebmenuService } from './header-webmenu.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
 
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Rx';
   templateUrl: './header-webmenu.component.html',
   styleUrls: ['./header-webmenu.component.css']
 })
-export class HeaderWebmenuComponent implements OnInit {
+export class HeaderWebmenuComponent implements OnInit, OnDestroy {
 
   public disabled: boolean = false;
   public status: { isopen: boolean } = { isopen: false };
@@ -25,7 +25,7 @@ export class HeaderWebmenuComponent implements OnInit {
   ngOnInit() {
     this.getWebMenus();
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.sub.unsubscribe();
   }
 

@@ -1,5 +1,5 @@
 import { IndexService } from './index.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-index',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index.component.css'],
   providers: [IndexService]
 })
-export class IndexComponent implements OnInit {
+export class IndexComponent implements OnInit, OnDestroy {
 
   public allServiceHighLights;
   sub;
@@ -18,7 +18,7 @@ export class IndexComponent implements OnInit {
     this.getServiceHighLights();
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.sub.unsubscribe();
   }
 

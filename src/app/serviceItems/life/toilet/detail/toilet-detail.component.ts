@@ -3,14 +3,14 @@ import { URLSearchParams } from '@angular/http';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToiletDetailService } from './toilet-detail.service';
-import { Component, OnInit, enableProdMode, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, enableProdMode, Output, EventEmitter, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-toilet',
   templateUrl: './toilet-detail.component.html',
-  providers: [ToiletDetailService,CrumbsService]
+  providers: [ToiletDetailService, CrumbsService]
 })
-export class ToiletDetailComponent implements OnInit {
+export class ToiletDetailComponent implements OnInit, OnDestroy {
 
   private content;
   private sub;
@@ -18,7 +18,7 @@ export class ToiletDetailComponent implements OnInit {
 
   constructor(
     private toiletDetailService: ToiletDetailService,
-    private crumbsService:CrumbsService,
+    private crumbsService: CrumbsService,
     private route: ActivatedRoute,
     private router: Router) { }
 

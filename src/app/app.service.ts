@@ -1,11 +1,11 @@
 import { environment } from './../environments/environment';
 import { Http, Response } from '@angular/http';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class AppService {
+export class AppService implements OnDestroy {
 
   sub;
   public serviceName: string;

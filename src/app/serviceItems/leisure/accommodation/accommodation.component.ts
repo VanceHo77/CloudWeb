@@ -1,14 +1,14 @@
 import { AppService } from './../../../app.service';
 import { HistoryService } from './../../../core/history/history.Service';
 import { AccommodationService } from './accommodation.service';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-accommodation',
   templateUrl: './accommodation.component.html',
   providers: [HistoryService, AppService, AccommodationService]
 })
-export class AccommodationComponent implements OnInit {
+export class AccommodationComponent implements OnInit, OnDestroy {
   sub;
 
   @Output() public jsonData: any;

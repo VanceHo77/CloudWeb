@@ -10,7 +10,7 @@
           </tr>
           <tr>
             <td><strong>簡介</strong></td>
-            <td>{{m.tolDescribe}}</td>
+            <td [innerHTML]="m.tolDescribe"></td>
           </tr>
           <tr>
             <td><strong>郵遞區號</strong></td>
@@ -50,7 +50,7 @@
           </tr>
           <tr>
             <td><strong>交通資訊</strong></td>
-            <td>{{m.travellingInfo}}</td>
+            <td [innerHTML]="m.travellingInfo"></td>
           </tr>
           <tr>
             <td><strong>備註</strong></td>

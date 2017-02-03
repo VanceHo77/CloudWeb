@@ -1,7 +1,7 @@
 import { HistoryService } from './../../../core/history/history.Service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LegalAdviceService } from './legal-advice.service';
-import { Component, enableProdMode } from '@angular/core';
+import { Component, enableProdMode, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
 // 在Component中連續修改同一個值，會產生錯誤(Expression has changed after it was checked.)
@@ -14,7 +14,7 @@ enableProdMode();
   styleUrls: ['./legal-advice.component.css'],
   providers: [HistoryService, LegalAdviceService]
 })
-export class LegalAdviceComponent {
+export class LegalAdviceComponent implements OnInit, OnDestroy {
 
   private serviceName: string;
   private content;
