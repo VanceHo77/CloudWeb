@@ -6,7 +6,7 @@
         <tbody>
           <tr>
             <td><strong>名稱</strong></td>
-            <td>{{m.name}}</td>
+            <td [innerHTML]="m.name"></td>
           </tr>
           <tr>
             <td><strong>簡介</strong></td>
@@ -14,11 +14,11 @@
           </tr>
           <tr>
             <td><strong>郵遞區號</strong></td>
-            <td>{{m.zipCode}}</td>
+            <td [innerHTML]="m.zipCode"></td>
           </tr>
           <tr>
             <td><strong>地址</strong></td>
-            <td>{{m.address}}</td>
+            <td [innerHTML]="m.address"></td>
           </tr>
           <tr>
             <td><strong>管理單位</strong></td>
@@ -30,23 +30,23 @@
           </tr>
           <tr>
             <td><strong>費用</strong></td>
-            <td>{{m.charge}}</td>
+            <td [innerHTML]="m.charge"></td>
           </tr>
           <tr>
             <td><strong>營業時間</strong></td>
-            <td>{{m.openTime}}</td>
+            <td [innerHTML]="m.openTime"></td>
           </tr>
           <tr>
             <td><strong>電話</strong></td>
-            <td>{{m.tel}}</td>
+            <td [innerHTML]="m.tel"></td>
           </tr>
           <tr>
             <td><strong>傳真</strong></td>
-            <td>{{m.fax}}</td>
+            <td [innerHTML]="m.fax"></td>
           </tr>
           <tr>
             <td><strong>停車資訊</strong></td>
-            <td>{{m.parkingInfo}}</td>
+            <td [innerHTML]="m.parkingInfo"></td>
           </tr>
           <tr>
             <td><strong>交通資訊</strong></td>
@@ -54,11 +54,11 @@
           </tr>
           <tr>
             <td><strong>備註</strong></td>
-            <td>{{m.remarks}}</td>
+            <td [innerHTML]="m.remarks"></td>
           </tr>
           <tr>
             <td><strong>更新時間</strong></td>
-            <td>{{m.changeTime}}</td>
+            <td [innerHTML]="m.changeTime"></td>
           </tr>
         </tbody>
       </table>

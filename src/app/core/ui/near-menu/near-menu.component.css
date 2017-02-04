@@ -1,6 +1,22 @@
 .btnMenu {
     margin-bottom: 0.5%;
 }
-.nearBtn {
-    float:left;
+#accBtn {
+    background: url(app/core/ui/googlemap/icon/green-dot.png) no-repeat scroll 3px 3px;
+    padding-left:30px;
+}
+#attrBtn{
+    background: url(app/core/ui/googlemap/icon/purple-dot.png) no-repeat scroll 3px 3px;
+    padding-left:30px;
+}
+#gourBtn {
+    background: url(app/core/ui/googlemap/icon/blue-dot.png) no-repeat scroll 3px 3px;
+    padding-left:30px;
+}
+
+#accBtn:hover, #attrBtn:hover, #gourBtn:hover {
+  background-color: #ccc;
+}
+#near0:checked + label, #near1:checked + label, #near2:checked + label{
+  background-color: #ccc;
 }
