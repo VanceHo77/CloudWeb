@@ -17,7 +17,7 @@ export class GoogleMapsImplComponent {
   // 放大倍數
   public zoom: number = 12;
   // 資料來源
-  @Input() public jsonDataSource: Array<marker>;
+  @Input() public jsonDataSource: marker[];;
   // 用於顯示gmap上的點位資料
   public markers: marker[];
 

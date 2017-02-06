@@ -11,6 +11,9 @@ export class InfoWindowManager {
   private _infoWindows: Map<SebmGoogleMapInfoWindow, Promise<InfoWindow>> =
   new Map<SebmGoogleMapInfoWindow, Promise<InfoWindow>>();
 
+  public static Lng: string = '';
+  public static Lat: string = '';
+
   constructor(
     private _mapsWrapper: GoogleMapsAPIWrapper, private _zone: NgZone,
     private _markerManager: MarkerManager) { }
@@ -52,6 +55,8 @@ export class InfoWindowManager {
     return this._infoWindows.get(infoWindow).then((w) => {
       if (infoWindow.hostMarker != null) {
         return this._markerManager.getNativeMarker(infoWindow.hostMarker).then((marker) => {
+          InfoWindowManager.Lat = infoWindow.latitude.toString();
+          InfoWindowManager.Lng = infoWindow.longitude.toString();
           return this._mapsWrapper.getNativeMap().then((map) => w.open(map, marker));
         });
       }

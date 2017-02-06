@@ -22,6 +22,11 @@ export class GooglemapComponent implements OnChanges {
     @Input() public attractionsDisabled: boolean;
 
     public jsonData: marker[];
+    // 附近店家資料
+    public gourmetJsonData: marker[] = [];
+    public accJsonData: marker[] = [];
+    public attJsonData: marker[] = [];
+
     public neardisabled: boolean;
     public gourmetdisabled: boolean;
     public accdisabled: boolean;
@@ -41,6 +46,33 @@ export class GooglemapComponent implements OnChanges {
         }
 
     }
+
+    nearChange(nears: any) {
+        let gou: marker[] = [];
+        let acc: marker[] = [];
+        let att: marker[] = [];
+        nears.forEach(function (v, k) {
+            if (v != '') {
+                let json: marker[] = <marker[]>JSON.parse(v);
+                switch (k) {
+                    case 'gourmet':
+                        gou = json;
+                        break;
+                    case 'accommodation':
+                        acc = json;
+                        break;
+                    case 'attractions':
+                        att = json;
+                        break;
+                }
+            }
+        });
+
+        if (gou.length > 0) this.gourmetJsonData = gou;
+        if (acc.length > 0) this.accJsonData = acc;
+        if (att.length > 0) this.attJsonData = att;
+    }
+
     ngOnChanges() {
         if (this.nearDisabled == null) {
             this.neardisabled = null;
