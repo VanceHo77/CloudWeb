@@ -3,6 +3,7 @@ export interface marker {
   tyWebsite?: string;
   name?: string;
   tolDescribe?: string;
+  tol_describe?: string;
   address?: string;
   zipCode?: string;
   travellingInfo?: string;
@@ -11,6 +12,7 @@ export interface marker {
   py?: number | string;
   website?: string;
   parkingInfo?: string;
+  parking_info?: string;
   remarks?: string;
   tel?: string;
   fax?: string;

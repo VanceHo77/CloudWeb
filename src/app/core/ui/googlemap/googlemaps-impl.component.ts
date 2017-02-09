@@ -15,20 +15,30 @@ export class GoogleMapsImplComponent {
   public defLat: number = 24.979690;
   public defLng: number = 121.253992;
   // 放大倍數
-  public zoom: number = 12;
+  public zoom: number = 11;
   // 資料來源
-  @Input() public jsonDataSource: marker[];;
+  @Input() public jsonDataSource: marker[];
+  // 附近店家資料
+  @Input() public gouJsonDataSource: marker[];
+  @Input() public accJsonDataSource: marker[];
+  @Input() public attJsonDataSource: marker[];
   // 用於顯示gmap上的點位資料
   public markers: marker[];
+  // 用於顯示gmap上的附近店家點位資料
+  public gouMarkers: marker[] = [];
+  public accMarkers: marker[] = [];
+  public attMarkers: marker[] = [];
+  // 地圖上是否已經有顯示markers
+  private isDisplayMarkers: boolean = false;
 
   private baseUrl = 'app/core/ui/googlemap/icon/';
-  public gourmet_iconurl: string = this.baseUrl + 'blue-dot.png';
-  public accommodation_iconurl: string = this.baseUrl + 'green-dot.png';
-  public attractions: string = this.baseUrl + 'purple-dot.png';
+  private gourmet_iconurl = this.baseUrl + 'blue-dot.png';
+  private accommodation_iconurl = this.baseUrl + 'green-dot.png';
+  private attractions_iconurl = this.baseUrl + 'purple-dot.png';
 
 
   ngOnChanges() {
-    if (this.jsonDataSource != null) {
+    if (this.jsonDataSource != null && !this.isDisplayMarkers) {
       let tmp: marker[] = [];
       let px: string;
       let py: string;
@@ -69,7 +79,55 @@ export class GoogleMapsImplComponent {
         });
       }
       this.markers = tmp;
+      this.isDisplayMarkers = true;
+    } else if (this.jsonDataSource == null || this.jsonDataSource.length == 0) {
+      this.isDisplayMarkers = false;
+      this.markers = [];
     }
+    if (this.gouJsonDataSource != null) {
+      this.gouMarkers = this.nearChange(this.gouJsonDataSource);
+    }
+    if (this.accJsonDataSource != null) {
+      this.accMarkers = this.nearChange(this.accJsonDataSource);
+    }
+    if (this.attJsonDataSource != null) {
+      this.attMarkers = this.nearChange(this.attJsonDataSource);
+    }
+  }
+
+  nearChange(sourceData: marker[]) {
+    let tmp: marker[] = [];
+    let px: string;
+    let py: string;
+    let tyWebsite: string;
+    let website: string;
+
+    if (sourceData.length == 0) {
+      return tmp;
+    }
+
+    for (let marker of sourceData) {
+      px = marker.px.toString();
+      py = marker.py.toString();
+      website = marker.website.trim();
+
+      if (website != '') website = '<a href="' + website + '" target="_blank">' + website + '</a>';
+      tmp.push(<marker>{
+        px: parseFloat(px),
+        py: parseFloat(py),
+        name: marker.name,
+        title: marker.name,
+        tolDescribe: marker.tol_describe,
+        address: marker.address,
+        openTime: marker.openTime,
+        website: website,
+        parkingInfo: marker.parking_info,
+        tel: marker.tel,
+        charge: marker.charge,
+        draggable: false
+      });
+    }
+    return tmp;
   }
 
 }

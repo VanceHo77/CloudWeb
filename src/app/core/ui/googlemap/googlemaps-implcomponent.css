@@ -4,6 +4,7 @@
 
 .table-markerinfo{
   font-size:12px;
+  font-family: 微軟正黑體;
 }
 
 .table-markerinfo tbody tr td:first-child{
@@ -12,5 +13,6 @@
 
 .table-markerinfo tbody tr td{
   width: 88%;
-  padding: 3px;
+  padding: 2px;
 }
+

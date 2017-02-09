@@ -14,11 +14,11 @@ export class GooglemapComponent implements OnChanges {
     @Input() public jsonDataSource: marker[];
     // 是否顯示附近店家資訊選項
     @Input() public nearDisabled: boolean;
-    // 是否顯示附近美食
+    // 是否顯示附近美食選項
     @Input() public gourmetDisabled: boolean;
-    // 是否顯示附近住宿
+    // 是否顯示附近住宿選項
     @Input() public accommodationDisabled: boolean;
-    // 是否顯示附近景點
+    // 是否顯示附近景點選項
     @Input() public attractionsDisabled: boolean;
 
     public jsonData: marker[];
@@ -67,10 +67,9 @@ export class GooglemapComponent implements OnChanges {
                 }
             }
         });
-
-        if (gou.length > 0) this.gourmetJsonData = gou;
-        if (acc.length > 0) this.accJsonData = acc;
-        if (att.length > 0) this.attJsonData = att;
+        this.gourmetJsonData = gou;
+        this.accJsonData = acc;
+        this.attJsonData = att;
     }
 
     ngOnChanges() {

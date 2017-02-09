@@ -37,11 +37,16 @@ export class NearMenuComponent implements OnChanges, OnDestroy {
   select() {
     let nears = document.getElementsByName('near');
     let key: string;
+    let chkCount: number = 0;
     for (var i = 0; i < nears.length; i++) {
       if ((<HTMLInputElement>nears[i]).checked) {
         key = nears[i].getAttribute('value');
         this.getNearInfo(key);
+        chkCount++;
       }
+    }
+    if (chkCount == 0) {
+      this.getNearInfo(key);
     }
   }
 
@@ -64,15 +69,17 @@ export class NearMenuComponent implements OnChanges, OnDestroy {
 
   emitData(key: string) {
     let sndData: Map<string, { values: string }> = new Map<string, { values: string }>();
-    this.nearInfos.forEach(function (v, k) {
-      if (key == k) {
-        sndData.set(k, v);
-      }
-    });
+    if (key != null) {
+      this.nearInfos.forEach(function (v, k) {
+        if (key == k) {
+          sndData.set(k, v);
+        }
+      });
+    }
     this.sltNearsEvt.emit(sndData);
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    if (this.sub != null) this.sub.unsubscribe();
   }
 }

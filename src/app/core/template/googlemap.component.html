@@ -1,5 +1,8 @@
 <app-distrct-menu (selectsEvt)="districtChange($event)"></app-distrct-menu>
-<app-near-menu  (sltNearsEvt)='nearChange($event)' 
+<app-near-menu  
+    (sltNearsEvt)='nearChange($event)' 
     [nearDisabled]='neardisabled' [accommodationDisabled]='accdisabled' 
     [attractionsDisabled]='attrdisabled'  [gourmetDisabled]='gourmetdisabled'></app-near-menu>
-<googlemaps-root [jsonDataSource]="jsonData"></googlemaps-root>
+<googlemaps-root 
+        [jsonDataSource]="jsonData" 
+        [gouJsonDataSource]="gourmetJsonData" [accJsonDataSource]="accJsonData" [attJsonDataSource]="attJsonData"></googlemaps-root>
