@@ -47,9 +47,7 @@ export class InfoWindowManager {
   open(infoWindow: SebmGoogleMapInfoWindow): Promise<void> {
     // 開啟一個視窗就關閉其他視窗
     this._infoWindows.forEach((value: Promise<InfoWindow>, key: SebmGoogleMapInfoWindow) => {
-      if (key.isOpen) {
-        key.close();
-      }
+      key.close();
     });
 
     return this._infoWindows.get(infoWindow).then((w) => {

@@ -1,8 +1,10 @@
+import { InfoWindowManager } from './core/services/managers/info-window-manager';
 import { marker } from './marker.class';
 import { GoogleMapsAPIWrapper } from './core/services/google-maps-api-wrapper';
 import { MarkerManager } from './core/services/managers/marker-manager';
 
 import { Component, OnInit, Input } from '@angular/core';
+
 
 @Component({
   selector: 'googlemaps-root',
@@ -28,17 +30,16 @@ export class GoogleMapsImplComponent {
   public gouMarkers: marker[] = [];
   public accMarkers: marker[] = [];
   public attMarkers: marker[] = [];
-  // 地圖上是否已經有顯示markers
-  private isDisplayMarkers: boolean = false;
 
   private baseUrl = 'app/core/ui/googlemap/icon/';
   private gourmet_iconurl = this.baseUrl + 'blue-dot.png';
   private accommodation_iconurl = this.baseUrl + 'green-dot.png';
-  private attractions_iconurl = this.baseUrl + 'purple-dot.png';
-
+  private attractions_iconurl = this.baseUrl + 'yellow-dot.png';
+  private oldjsonDataLen: number = 0;
 
   ngOnChanges() {
-    if (this.jsonDataSource != null && !this.isDisplayMarkers) {
+    if (this.jsonDataSource != null && this.jsonDataSource.length > 0 ) {
+      this.oldjsonDataLen = this.jsonDataSource.length;
       let tmp: marker[] = [];
       let px: string;
       let py: string;
@@ -79,11 +80,13 @@ export class GoogleMapsImplComponent {
         });
       }
       this.markers = tmp;
-      this.isDisplayMarkers = true;
     } else if (this.jsonDataSource == null || this.jsonDataSource.length == 0) {
-      this.isDisplayMarkers = false;
       this.markers = [];
+      this.gouJsonDataSource = [];
+      this.accJsonDataSource = [];
+      this.attJsonDataSource = [];
     }
+
     if (this.gouJsonDataSource != null) {
       this.gouMarkers = this.nearChange(this.gouJsonDataSource);
     }
@@ -93,18 +96,18 @@ export class GoogleMapsImplComponent {
     if (this.attJsonDataSource != null) {
       this.attMarkers = this.nearChange(this.attJsonDataSource);
     }
+
   }
 
   nearChange(sourceData: marker[]) {
+    if (sourceData.length == 0) {
+      return [];
+    }
     let tmp: marker[] = [];
     let px: string;
     let py: string;
     let tyWebsite: string;
     let website: string;
-
-    if (sourceData.length == 0) {
-      return tmp;
-    }
 
     for (let marker of sourceData) {
       px = marker.px.toString();

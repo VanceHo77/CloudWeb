@@ -1,3 +1,4 @@
+import { InfoWindowManager } from './../googlemap/core/services/managers/info-window-manager';
 import { NearMenuService } from './near-menu.service';
 import { marker } from './../googlemap/marker.class';
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter, OnDestroy } from '@angular/core';
@@ -14,15 +15,19 @@ export class NearMenuComponent implements OnChanges, OnDestroy {
   @Input() accommodationDisabled: boolean;
   @Input() attractionsDisabled: boolean;
   @Input() gourmetDisabled: boolean;
+  //是否執行重設
+  @Input() isClear: boolean;
 
   sub;
-  public neardisabled: boolean = false;
-  public gourmetdisabled: boolean = false;
-  public accdisabled: boolean = false;
-  public attrdisabled: boolean = false;
+  private neardisabled: boolean = false;
+  private gourmetdisabled: boolean = false;
+  private accdisabled: boolean = false;
+  private attrdisabled: boolean = false;
 
-  public nearInfos = new Map();
-  public sltNearInfos: marker[];
+  private nearInfos = new Map();
+  private sltNearInfos: marker[];
+  private oldLng: string;
+  private oldLat: string;
   @Output() sltNearsEvt: EventEmitter<Map<string, { values: string }>> = new EventEmitter<Map<string, { values: string }>>();
 
   constructor(private nearMenuService: NearMenuService) { }
@@ -32,51 +37,61 @@ export class NearMenuComponent implements OnChanges, OnDestroy {
     if (this.accommodationDisabled != null) this.accdisabled = this.accommodationDisabled;
     if (this.attractionsDisabled != null) this.attrdisabled = this.attractionsDisabled;
     if (this.gourmetDisabled != null) this.gourmetdisabled = this.gourmetDisabled;
+    if (this.isClear) this.clear();
   }
 
   select() {
     let nears = document.getElementsByName('near');
-    let key: string;
-    let chkCount: number = 0;
+    let keys: string[] = [];
     for (var i = 0; i < nears.length; i++) {
       if ((<HTMLInputElement>nears[i]).checked) {
-        key = nears[i].getAttribute('value');
-        this.getNearInfo(key);
-        chkCount++;
+        keys.push(nears[i].getAttribute('value'));
       }
     }
-    if (chkCount == 0) {
-      this.getNearInfo(key);
-    }
-  }
-
-  getNearInfo(key: string) {
-    if (this.nearInfos.size == 0) {
-      this.sub = this.nearMenuService.getNearInfo().subscribe(
-        data => {
-          this.nearInfos.set('gourmet', JSON.stringify(data.gourmet));
-          this.nearInfos.set('accommodation', JSON.stringify(data.accommodation));
-          this.nearInfos.set('attractions', JSON.stringify(data.attractions));
-          this.emitData(key);
-        },
-        err => console.error(err),
-        () => console.log('done loading NearInfo')
-      );
+    if (keys.length == 0) {
+      this.nearInfos = new Map();
+      this.getNearInfo(keys);
     } else {
-      this.emitData(key);
+      this.getNearInfo(keys);
     }
   }
 
-  emitData(key: string) {
+  getNearInfo(keys: string[]) {
+    this.sub = this.nearMenuService.getNearInfo().subscribe(
+      data => {
+        this.nearInfos.set('gourmet', JSON.stringify(data.gourmet));
+        this.nearInfos.set('accommodation', JSON.stringify(data.accommodation));
+        this.nearInfos.set('attractions', JSON.stringify(data.attractions));
+        this.emitData(keys);
+      },
+      err => console.error(err),
+      () => console.log('done loading NearInfo')
+    );
+  }
+
+  emitData(keys: string[]) {
     let sndData: Map<string, { values: string }> = new Map<string, { values: string }>();
-    if (key != null) {
+    if (keys != null) {
       this.nearInfos.forEach(function (v, k) {
-        if (key == k) {
-          sndData.set(k, v);
+        for (let key of keys) {
+          if (key == k) {
+            sndData.set(k, v);
+          }
         }
       });
     }
     this.sltNearsEvt.emit(sndData);
+  }
+
+  clear() {
+    let nears = document.getElementsByName('near');
+    for (var i = 0; i < nears.length; i++) {
+      let d = <HTMLInputElement>nears[i];
+      if (d.checked) {
+        d.checked = false;
+      }
+    }
+    this.nearInfos.clear();
   }
 
   ngOnDestroy() {

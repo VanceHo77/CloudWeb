@@ -31,10 +31,12 @@ export class GooglemapComponent implements OnChanges {
     public gourmetdisabled: boolean;
     public accdisabled: boolean;
     public attrdisabled: boolean;
+    //區域按鈕是否執行重設
+    public districtClear: boolean;
 
     districtChange(districts: string[]) {
         this.jsonData = [];
-        if (districts != null || districts.length > 0) {
+        if (districts != null && districts.length > 0) {
             var tmpData = this.jsonDataSource.slice(0);
             for (let dist of districts) {
                 for (var i = 0; i < tmpData.length; i++) {
@@ -43,6 +45,10 @@ export class GooglemapComponent implements OnChanges {
                     }
                 }
             }
+            this.districtClear = false;
+        } else {
+            // 重設
+            this.districtClear = true;
         }
 
     }
