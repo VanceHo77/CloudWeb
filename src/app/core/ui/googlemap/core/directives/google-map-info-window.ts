@@ -145,8 +145,20 @@ export class SebmGoogleMapInfoWindow implements OnDestroy, OnChanges, OnInit {
    * Opens the info window.
    */
   open(): Promise<void> {
-    this.isOpen = true; 
-    return this._infoWindowManager.open(this); 
+    this.isOpen = true;
+    //清除附近店家資訊選取狀態
+    this.clear();
+    return this._infoWindowManager.open(this);
+  }
+
+  clear() {
+    let nears = document.getElementsByName('near');
+    for (var i = 0; i < nears.length; i++) {
+      let d = <HTMLInputElement>nears[i];
+      if (d.checked) {
+        d.checked = false;
+      }
+    }
   }
 
   /**
